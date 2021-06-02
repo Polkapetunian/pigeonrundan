@@ -1,0 +1,202 @@
+[
+  {
+    "title": "Vargen",
+    "artist": "Lennart Sand",
+    "year": 1999,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.3697610, 13.4867216]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Dimman",
+    "artist": "Gusten Lindberg",
+    "year": 1937,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.3766395, 13.4929866]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Flottaren",
+    "artist": "Solveig Nyqvist",
+    "year": 2001,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.3814502, 13.4872158]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Ratrace",
+    "artist": "Maria Vallgren",
+    "year": 2015,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.3754438, 13.5016555]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Into my eye",
+    "artist": "Håkan Blomqvist & Karin Westman",
+    "year": 2013,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.3754243, 13.5019867]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Solur",
+    "artist": "Roland Haeberlein",
+    "year": 1976,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.3820127, 13.4923274]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Med ett lende",
+    "artist": "Viktor Korneev",
+    "year": 2007,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.3763910, 13.5058025]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Hertig Karl",
+    "artist": "Christian Eriksson",
+    "year": 1926,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.3807940, 13.4992163]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Sola i Karlstad",
+    "artist": "Herman Reijers",
+    "year": 1985,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.3811784, 13.4997129]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Selma Lagerlöf",
+    "artist": "Arvid Backlund",
+    "year": 1958,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.3821020, 13.4986457]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Torgdammen",
+    "artist": "Ove Lindblom",
+    "year": 1989,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.3832773, 13.5026428]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Sveno Elfdalius",
+    "artist": "Carl Eldh",
+    "year": 1929,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.3812395, 13.5064516]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Bokmoln",
+    "artist": "Peder Istad",
+    "year": 2015,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.383250, 13.502169]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Handen",
+    "artist": "Eugen Krajcik",
+    "year": 1994,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.3820438, 13.5121201]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Vändande lodjur",
+    "artist": "Arvid Knöppel",
+    "year": 1952,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.3876854, 13.5076532]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Sven Erik Magnusson",
+    "artist": "Assa Kauppi",
+    "year": 2020,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.386277, 13.498823]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Ferlin steppar",
+    "artist": "Thomas Qvarsebo",
+    "year": 2002,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.381111, 13.501831]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Fröding",
+    "artist": "Herman Reijers",
+    "year": 1996,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.380384, 13.501843]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Fredsmonumentet",
+    "artist": "Ivar Johnsson",
+    "year": 1955,
+    "location": {
+      "type": "Point",
+      "coordinates": [59.380735, 13.502403]
+    },
+    "clue": ""
+  },
+  {
+    "title": "Vindarnas boning",
+    "artist": "Aimo Tukiainen",
+    "year": 1967,
+    "location": {
+    "type": "Point",
+    "coordinates": [59.381592, 13.497686]
+    },
+    "clue": ""
+  }
+]
