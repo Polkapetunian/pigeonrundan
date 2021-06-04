@@ -1,16 +1,23 @@
 import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet"
 import { Icon } from "leaflet"
+
+import Main from './components/Main'
+import Login from './components/Login'
+import Register from './components/Register'
+
 
 export const App = () => {
   return (
     <div>
-      <MapContainer center={[59.402180, 13.511498 ]} zoom={12}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        />
-      </MapContainer>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Main} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+        </Switch>
+      </BrowserRouter>
     </div>
   )
 }
