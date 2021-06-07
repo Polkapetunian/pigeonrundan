@@ -1,7 +1,5 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet"
-import { Icon } from "leaflet"
 
 import Main from './components/Main'
 import Login from './components/Login'
