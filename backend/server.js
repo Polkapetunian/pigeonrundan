@@ -17,7 +17,7 @@ mongoose.Promise = Promise
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: true,
+    required: false,
     unique: true
   },
   password: {
@@ -140,7 +140,7 @@ app.post('/sessions', async (req, res) => {
       res.json({
         success: true,
         userID: user._id,
-        username: user.username,
+        userName: user.username,
         accessToken: user.accessToken
       })
     } else {
