@@ -8,9 +8,11 @@ import Login from './components/Login'
 import Register from './components/Register'
 
 import user from './reducers/user'
+import artwork from './reducers/artwork'
 
 const reducer = combineReducers({
   user: user.reducer,
+  artwork: artwork.reducer
 })
 const store = configureStore({ reducer })
 export const App = () => {
