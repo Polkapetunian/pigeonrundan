@@ -28,7 +28,7 @@ const Login = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ username, email, password })
+      body: JSON.stringify({ username, email, password  })
     }
     fetch(API_URL('users'), config)
       .then(res => res.json())
@@ -65,5 +65,4 @@ const Login = () => {
     </form>
   )
 }
-
 export default Login
