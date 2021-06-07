@@ -5,8 +5,13 @@ import listEndpoints from 'express-list-endpoints'
 import dotenv from 'dotenv'
 import crypto from 'crypto'
 import bcrypt from 'bcrypt'
+import { readFile } from 'fs/promises'
 
-import artWorks from './data/artworks.json'
+const artWorks = JSON.parse(
+  await readFile(
+    new URL('./data/artworks.json', import.meta.url)
+  )
+  )
 
 dotenv.config()
 
