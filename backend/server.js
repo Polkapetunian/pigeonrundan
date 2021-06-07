@@ -11,7 +11,7 @@ const artWorks = JSON.parse(
   await readFile(
     new URL('./data/artworks.json', import.meta.url)
   )
-  )
+)
 
 dotenv.config()
 
@@ -22,7 +22,7 @@ mongoose.Promise = Promise
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: false,
+    required: true,
     unique: true
   },
   password: {
@@ -108,6 +108,7 @@ app.get('/', (req, res) => {
   res.send(listEndpoints(app))
 })
 
+//Should we add authenticateUser to this?
 app.get('/artworks', async (req, res) => {
   const artWorks = await ArtWork.find()
   res.json(artWorks)
