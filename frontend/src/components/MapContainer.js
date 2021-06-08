@@ -1,29 +1,12 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api'
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
 
 import artwork from '../reducers/artwork'
 
 const MapContainer = () => {
 
-  const [ selected, setSelected ] = useState({})
-
-  // const [ answer, setAnswer ] = useState('')
-
   const dispatch = useDispatch()
-
-  const onSelect = item => {
-    setSelected(item)
-    dispatch(artwork.actions.setArtworkId(selected.id))
-  }
-
-  // const onAnswer = (event) => {
-  //   setAnswer(event.target.value)
-  // }
-
-  // const onFormSubmit = (event) => {
-  //   event.preventDefaut()
-  // }
 
   const locations = [
     {
@@ -82,32 +65,11 @@ const MapContainer = () => {
             <Marker
               key={item.title}
               position={item.location}
-              onClick={() => onSelect(item)}
+              onClick={() => dispatch(artwork.actions.setArtworkId(item.id))}
             />
                 )
               })
             }
-            {/* {
-              selected.location &&
-              (
-                <InfoWindow
-                position={selected.location}
-                clickable={true}
-                onCloseClick={() => setSelected({})}
-                >
-                  <p>{selected.title}</p>
-                  <form onSubmit={onFormSubmit}>
-                    <label>
-                      <input 
-                      type="text"
-                      maxLength="1"
-                      value={answer}
-                      onChange={onAnswer}/>
-                    </label>
-                  </form>
-                </InfoWindow>
-              )
-            } */}
           </GoogleMap>
      </LoadScript>
      </>
