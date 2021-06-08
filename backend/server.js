@@ -7,9 +7,15 @@ import crypto from 'crypto'
 import bcrypt from 'bcrypt'
 import { readFile } from 'fs/promises'
 
-const artWorks = JSON.parse(
+const artWorksKarlstad = JSON.parse(
   await readFile(
-    new URL('./data/artworks.json', import.meta.url)
+    new URL('./data/karlstad.json', import.meta.url)
+  )
+)
+
+const artWorksUppsala = JSON.parse(
+  await readFile(
+    new URL('./data/uppsala.json', import.meta.url)
   )
 )
 
@@ -43,6 +49,10 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema)
 
 const artWorkSchema = new mongoose.Schema({
+  id: {
+    type: Number,
+    required: true
+  },
   title: {
     type: String,
     required: true
@@ -57,18 +67,23 @@ const artWorkSchema = new mongoose.Schema({
   },
   location: {
     type: {
-      type: String },
-      coordinates: []
+      type: Number,
+      type: Number }
   },
   clue: {
     type: String,
-    required: false
-  } 
+    required: true
+  } ,
+  correctAnswer: {
+    type: String,
+    required: true
+  }
 })
 
 //artWorkSchema.index({ "location":"2dsphere" })
 
-const ArtWork = mongoose.model('ArtWork', artWorkSchema)
+const ArtWorkKarlstad = mongoose.model('ArtWorkKarlstad', artWorkSchema)
+const ArtWorkUppsala = mongoose.model('ArtWorkUppsala', artWorkSchema)
 
 const authenticateUser = async (req, res, next) => {
   const accessToken = req.header('Authorization')
@@ -87,10 +102,15 @@ const authenticateUser = async (req, res, next) => {
 
 if (process.env.RESET_DB) {
   const seedDatabase = async () => {
-    await ArtWork.deleteMany()
+    await ArtWorkKarlstad.deleteMany()
+    await ArtWorkUppsala.deleteMany()
 
-    artWorks.forEach((artWorkData) => {
-      new ArtWork(artWorkData).save()
+    artWorksKarlstad.forEach((artWorkData) => {
+      new ArtWorkKarlstad(artWorkData).save()
+    })
+
+    artWorksUppsala.forEach((artWorkData) => {
+      new ArtWorkUppsala(artWorkData).save()
     })
   }
   seedDatabase()
@@ -109,8 +129,13 @@ app.get('/', (req, res) => {
 })
 
 //Should we add authenticateUser to this?
-app.get('/artworks', async (req, res) => {
-  const artWorks = await ArtWork.find()
+app.get('/artworks/Karlstad', async (req, res) => {
+  const artWorks = await ArtWorkKarlstad.find()
+  res.json(artWorks)
+})
+
+app.get('/artworks/Uppsala', async (req, res) => {
+  const artWorks = await ArtWorkUppsala.find()
   res.json(artWorks)
 })
 
