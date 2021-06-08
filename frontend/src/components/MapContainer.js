@@ -18,7 +18,7 @@ const MapContainer = () => {
        lat:59.3697610,
        lng:13.4867216
       },
-      "clue": ""
+      "clue": "Skriv andra bokstaven på rad ett."
     },
     {
       "id": 2,
@@ -29,7 +29,7 @@ const MapContainer = () => {
         lat:59.3766395,
         lng:13.4929866
       },
-      "clue": ""
+      "clue": "Skriv andra bokstaven på rad två."
     },
     {
       "id": 3,
@@ -40,7 +40,7 @@ const MapContainer = () => {
         lat:59.3814502,
         lng:13.4872158
       },
-      "clue": ""
+      "clue": "Skriv andra bokstaven på rad tre."
     }]
   
   const mapStyles = {        
