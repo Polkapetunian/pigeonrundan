@@ -114,6 +114,15 @@ app.get('/artworks', async (req, res) => {
   res.json(artWorks)
 })
 
+app.get('/artworks/:id', async (req, res) => { const {id} = req.params
+const selectedArtwork= await ArtWork.findOne({id: +id})
+  if (selectedArtwork) {
+    res.json(selectedArtwork)
+  } else {
+    res.status(404).json({ error: 'Konstverket du söker finns inte i databasen.'})
+  }
+})
+
 app.post('/users', async (req, res) => {
   const { username, password, email } = req.body
 
