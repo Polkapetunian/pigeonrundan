@@ -1,25 +1,32 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 
+import { ARTWORK_URL } from '../reusable/urls'
 
+import artwork from '../reducers/artwork'
 
 const SelectedArtworks = () => {
-    const { id } = useParams();
-    const [selectedArtwork, setSelectedArtwork] = useState({});
-    const ARTWORK_URL = `https://konstrundan.herokuapp.com/artworks/Karlstad`;
-  
+  const artworkId = useSelector((store) => store.artwork.artworkId)
+  const [selectedArtwork, setSelectedArtwork] = useState({})
+
+  const dispatch = useDispatch()
+
     useEffect(() => {
-      fetch(`${ARTWORK_URL}`)
-        .then((response) => response.json())
-        .then((json) => {
-          setSelectedArtwork(json);
+      fetch(`https://konstrundan.herokuapp.com/artworks/Karlstad/${artworkId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          dispatch(artwork.actions.setSelectedArtwork(data))
+          console.log(data)
         });
-    }, [id, ARTWORK_URL]);
+        
+    })
+
+    //ARTWORK_URL(artworkId)
 
 
   return (
     <div>
-      {selectedArtwork.id}
+      <p>Titel:{selectedArtwork.title}</p>
       <form>
         <label> Bokstav:
           <input
