@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
 
 import artwork from '../reducers/artwork'
@@ -7,41 +7,58 @@ import artwork from '../reducers/artwork'
 const MapContainer = () => {
 
   const dispatch = useDispatch()
+  const city = useSelector(store => store.city.city)
 
-  const locations = [
-    {
-      "id": 1,
-      "title": "Vargen",
-      "artist": "Lennart Sand",
-      "year": 1999,
-      "location": {
-       lat:59.3697610,
-       lng:13.4867216
-      },
-      "clue": ""
-    },
-    {
-      "id": 2,
-      "title": "Dimman",
-      "artist": "Gusten Lindberg",
-      "year": 1937,
-      "location": {
-        lat:59.3766395,
-        lng:13.4929866
-      },
-      "clue": ""
-    },
-    {
-      "id": 3,
-      "title": "Flottaren",
-      "artist": "Solveig Nyqvist",
-      "year": 2001,
-      "location": {
-        lat:59.3814502,
-        lng:13.4872158
-      },
-      "clue": ""
-    }]
+  // const locations = [
+  //   {
+  //     "id": 1,
+  //     "title": "Vargen",
+  //     "artist": "Lennart Sand",
+  //     "year": 1999,
+  //     "location": {
+  //      lat:59.3697610,
+  //      lng:13.4867216
+  //     },
+  //     "clue": ""
+  //   },
+  //   {
+  //     "id": 2,
+  //     "title": "Dimman",
+  //     "artist": "Gusten Lindberg",
+  //     "year": 1937,
+  //     "location": {
+  //       lat:59.3766395,
+  //       lng:13.4929866
+  //     },
+  //     "clue": ""
+  //   },
+  //   {
+  //     "id": 3,
+  //     "title": "Flottaren",
+  //     "artist": "Solveig Nyqvist",
+  //     "year": 2001,
+  //     "location": {
+  //       lat:59.3814502,
+  //       lng:13.4872158
+  //     },
+  //     "clue": ""
+  //   }]
+
+  useEffect(() => {
+    const options = {
+        method: 'GET',
+        // headers: {
+        //     Authorization: accessToken
+        // }
+    }
+
+    fetch(API_URL(city), options)
+        .then(res => res.json())
+        .then(artworks => {
+          console.log(artworks)
+        }
+    );
+})
   
   const mapStyles = {        
     height: "100vh",
