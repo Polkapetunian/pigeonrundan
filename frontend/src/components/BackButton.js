@@ -1,14 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+
+import artwork from '../reducers/artwork'
 
 const BackButton = () => {
+  const dispatch = useDispatch()
   
   return (
-    <Link to='/'>
-      <button>
-        <p>Back</p>
+
+      <button onClick={() => dispatch(artwork.actions.setArtworkId(null))} >
+        <p>Tillbaka</p>
       </button>
-    </Link>
+
   )
 }
 export default BackButton
