@@ -139,8 +139,17 @@ app.get('/artworks/Uppsala', async (req, res) => {
   res.json(artWorks)
 })
 
-app.get('/artworks/:id', async (req, res) => { const {id} = req.params
-const selectedArtwork= await ArtWork.findOne({id: +id})
+app.get('/artworks/Karlstad/:id', async (req, res) => { const {id} = req.params
+const selectedArtwork= await ArtWorkKarlstad.findOne({id: +id})
+  if (selectedArtwork) {
+    res.json(selectedArtwork)
+  } else {
+    res.status(404).json({ error: 'Konstverket du söker finns inte i databasen.'})
+  }
+})
+
+app.get('/artworks/Uppsala/:id', async (req, res) => { const {id} = req.params
+const selectedArtwork= await ArtWorkUppsala.findOne({id: +id})
   if (selectedArtwork) {
     res.json(selectedArtwork)
   } else {
