@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import BackButton from './BackButton'
+
 import { ARTWORK_URL } from '../reusable/urls'
 
 import artwork from '../reducers/artwork'
@@ -15,8 +17,8 @@ const SelectedArtworks = () => {
       fetch(`https://konstrundan.herokuapp.com/artworks/Karlstad/${artworkId}`)
         .then((res) => res.json())
         .then((data) => {
-          dispatch(artwork.actions.setSelectedArtwork(data.title))
-          console.log(data)
+          dispatch(artwork.actions.setSelectedArtwork(data.clue))
+         
         })
         
     }, [])
@@ -25,7 +27,9 @@ const SelectedArtworks = () => {
 
 
   return (
+    <>
     <div>
+      <BackButton/>
      <p>{artworkId}</p>
      <p>{selectedArtwork}</p>
       <form>
@@ -37,6 +41,7 @@ const SelectedArtworks = () => {
         </label>
       </form>
     </div>
+    </>
   )
 }
 export default SelectedArtworks
