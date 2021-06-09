@@ -76,4 +76,4 @@ const MapContainer = () => {
   )
 }
 
-export default MapContainer;
+export default MapContainer
