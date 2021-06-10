@@ -23,8 +23,7 @@ const SelectedArtworks = () => {
         
     }, [])
 
-    //ARTWORK_URL(artworkId)
-
+    //`${ARTWORK_URL}/${artworkId}`
 
   return ( 
     selectedArtwork &&
@@ -33,14 +32,14 @@ const SelectedArtworks = () => {
      <p>{artworkId}</p>
      <p>{selectedArtwork.title}</p>
      <p>{selectedArtwork.year}</p>
+     <p>{selectedArtwork.clue}</p>
       <form>
         <label> Bokstav:
           <input
-          type= "text">
-            
+          type= "text"> 
           </input>
         </label>
-      </form>}
+      </form>
     </div>
   )
 }
