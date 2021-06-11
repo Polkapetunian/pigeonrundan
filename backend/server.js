@@ -35,11 +35,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  email: {
-    type: String,
-    unique: true,
-    required: true
-  },
   accessToken: {
     type: String,
     default: () => crypto.randomBytes(128).toString('hex')
@@ -67,8 +62,8 @@ const artWorkSchema = new mongoose.Schema({
   },
   location: {
     type: {
-      type: Number,
-      type: Number }
+      type: mongoose.Types.Decimal128,
+      type: mongoose.Types.Decimal128 }    
   },
   clue: {
     type: String,
@@ -159,13 +154,12 @@ const selectedArtwork= await ArtWorkUppsala.findOne({id: +id})
 })
 
 app.post('/users', async (req, res) => {
-  const { username, password, email } = req.body
+  const { username, password } = req.body
 
   try {
     const salt = bcrypt.genSaltSync()
     const newUser = await new User({
       username,
-      email,
       password: bcrypt.hashSync(password, salt)
     }).save()
 
