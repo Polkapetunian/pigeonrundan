@@ -32,11 +32,11 @@ const SelectedArtworks = () => {
       <BackButton/>
      <p>{artworkId}</p>
      <p>{selectedArtwork}</p>
+     <img src="https://live.staticflickr.com/65535/51237398370_85f766eb1d_b.jpg" alt="Girl in a jacket"/>
       <form>
         <label> Bokstav:
           <input
           type= "text">
-            
           </input>
         </label>
       </form>
