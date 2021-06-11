@@ -1,23 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 import city from '../reducers/city'
 
-const dispatch = useDispatch()
-const city1 = "Karlstad"
-const city2 = "Uppsala"
+
+
 
 const Cities = () => {
+  const dispatch = useDispatch()
+
+  const city1 = "Karlstad"
+  const city2 = "Uppsala"
+
+  // useEffect(() => {
+  //   if (city !== null) {
+  //     history.push('/map')
+  //   }
+  // }, [city, history])
 
   return(
     <div>
       <p>Välj stad!</p>
-      <button onClick={() => dispatch(city.actions.setCity(city1))}>
+      <Link to="/">
+      <button onClick={() => dispatch(city.actions.setCurrentCity(city1))}>
         Karlstad
       </button>
-      <button onClick={() => dispatch(city.actions.setCity(city2))}>
+      </Link>
+      <Link to="/">
+      <button onClick={() => dispatch(city.actions.setCurrentCity(city2))}>
         Uppsala
       </button>
+      </Link>
     </div>
   )
 }
