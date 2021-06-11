@@ -17,31 +17,30 @@ const SelectedArtworks = () => {
       fetch(`https://konstrundan.herokuapp.com/artworks/Karlstad/${artworkId}`)
         .then((res) => res.json())
         .then((data) => {
-          dispatch(artwork.actions.setSelectedArtwork(data.clue))
+          dispatch(artwork.actions.setSelectedArtwork(data))
          
         })
         
     }, [])
 
-    //ARTWORK_URL(artworkId)
+    //`${ARTWORK_URL}/${artworkId}`
 
-
-  return (
-    <>
+  return ( 
+    selectedArtwork &&
     <div>
       <BackButton/>
      <p>{artworkId}</p>
-     <p>{selectedArtwork}</p>
-     <img src="https://live.staticflickr.com/65535/51237398370_85f766eb1d_b.jpg" alt="Girl in a jacket"/>
+     <p>{selectedArtwork.title}</p>
+     <p>{selectedArtwork.year}</p>
+     <p>{selectedArtwork.clue}</p>
       <form>
         <label> Bokstav:
           <input
-          type= "text">
+          type= "text"> 
           </input>
         </label>
       </form>
     </div>
-    </>
   )
 }
 export default SelectedArtworks
