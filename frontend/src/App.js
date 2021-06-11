@@ -7,6 +7,7 @@ import Main from './components/Main'
 import Login from './components/Login'
 import Register from './components/Register'
 import Cities from './components/Cities'
+import selectedArtwork from './components/SelectedArtwork'
 
 import user from './reducers/user'
 import artwork from './reducers/artwork'
@@ -26,6 +27,7 @@ export const App = () => {
             <Route exact path="/map" component={Main} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register}/>
+            <Route path="/artwork" component={selectedArtwork}/>
           </Switch>
         </Provider>
       </BrowserRouter>
