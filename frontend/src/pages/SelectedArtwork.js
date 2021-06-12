@@ -1,13 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import styled from 'styled-components'
 
-import ResponsiveImage from './ResponsiveImage'
-
-import BackButton from './BackButton'
+import ResponsiveImage from '../components/ResponsiveImage'
+import BackButton from '../components/BackButton'
 
 import { ARTWORK_URL } from '../reusable/urls'
-
 import artwork from '../reducers/artwork'
+
+const Container = styled.div `
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+const Text = styled.p`
+  width: 80%;
+`
+
 
 const SelectedArtworks = () => {
   const artworkId = useSelector((store) => store.artwork.artworkId)
@@ -37,13 +50,13 @@ const SelectedArtworks = () => {
 
   return ( 
     selectedArtwork &&
-    <div>
+    <Container>
       <BackButton/>
      <p>{artworkId}</p>
      <ResponsiveImage/>
-     <p>{selectedArtwork.title}</p>
-     <p>{selectedArtwork.year}</p>
-     <p>{selectedArtwork.clue}</p>
+     <Text>{selectedArtwork.title}</Text>
+     <Text>{selectedArtwork.year}</Text>
+     <Text>{selectedArtwork.clue}</Text>
       <form>
         <label> Bokstav:
           <input
@@ -51,7 +64,7 @@ const SelectedArtworks = () => {
           </input>
         </label>
       </form>
-    </div>
+    </Container>
   )
 }
 export default SelectedArtworks

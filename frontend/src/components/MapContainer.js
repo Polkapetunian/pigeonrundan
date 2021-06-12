@@ -1,56 +1,38 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
+import styled from 'styled-components'
 
 import artwork from '../reducers/artwork'
 import city from '../reducers/city'
+
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  @media (max-width: 767px) {
+    padding: 5px;
+  }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    padding: 20px;
+  }
+  @media (min-width: 1025px) {
+    padding: 20px;
+  }
+`
 
 const MapContainer = () => {
 
   const dispatch = useDispatch()
   const [locations, setLocations] = useState([])
-  // const currentCity = useSelector((store) => store.city.currentCity)
-
-  // console.log(currentCity)
-
-  // const locations = [
-  //   {
-  //     "id": 1,
-  //     "title": "Vargen",
-  //     "artist": "Lennart Sand",
-  //     "year": 1999,
-  //     "location": {
-  //      lat:59.3697610,
-  //      lng:13.4867216
-  //     },
-  //     "clue": ""
-  //   },
-  //   {
-  //     "id": 2,
-  //     "title": "Dimman",
-  //     "artist": "Gusten Lindberg",
-  //     "year": 1937,
-  //     "location": {
-  //       lat:59.3766395,
-  //       lng:13.4929866
-  //     },
-  //     "clue": ""
-  //   },
-  //   {
-  //     "id": 3,
-  //     "title": "Flottaren",
-  //     "artist": "Solveig Nyqvist",
-  //     "year": 2001,
-  //     "location": {
-  //       lat:59.3814502,
-  //       lng:13.4872158
-  //     },
-  //     "clue": ""
-  //   }]
   
   const mapStyles = {        
-    height: "100vh",
-    width: "100%"};
+    height: "75vh",
+    width: "90%"};
   
   const defaultCenterKarlstad = {
     lat: 59.402180, lng: 13.511498
@@ -69,7 +51,7 @@ const MapContainer = () => {
    console.log(locations)
   
   return (
-    <>
+    <Container>
      <LoadScript
        googleMapsApiKey={process.env.REACT_APP_API_KEY}>
         <GoogleMap
@@ -89,7 +71,7 @@ const MapContainer = () => {
             }
           </GoogleMap>
      </LoadScript>
-     </>
+    </Container>
   )
 }
 

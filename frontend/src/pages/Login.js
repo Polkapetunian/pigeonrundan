@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import Form from './Form'
+import Form from '../components/Form'
 
 const Login = () => {
   const [username, setUsername] = useState('')

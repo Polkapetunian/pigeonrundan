@@ -3,11 +3,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 
-import Main from './components/Main'
-import Login from './components/Login'
-import Register from './components/Register'
-import Cities from './components/Cities'
-import selectedArtwork from './components/SelectedArtwork'
+import Main from './pages/Main'
+import Login from './pages/Login'
+import Register from './pages/Register'
 
 import user from './reducers/user'
 import artwork from './reducers/artwork'
@@ -23,11 +21,9 @@ export const App = () => {
       <BrowserRouter>
         <Provider store={store}>
           <Switch>
-            <Route exact path="/" component={Cities} />
-            <Route exact path="/map" component={Main} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register}/>
-            <Route path="/artwork" component={selectedArtwork}/>
+            <Route exact path="/map" component={Main} />
           </Switch>
         </Provider>
       </BrowserRouter>
