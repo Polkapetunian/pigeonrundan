@@ -71,6 +71,12 @@ const artWorkSchema = new mongoose.Schema({
   }
 })
 
+const Letter = mongoose.model('Letter', {
+  letter: {
+    type: String
+  }
+})
+
 //artWorkSchema.index({ "location":"2dsphere" })
 
 const ArtWorkKarlstad = mongoose.model('ArtWorkKarlstad', artWorkSchema)
@@ -188,6 +194,22 @@ app.post('/sessions', async (req, res) => {
     }
   } catch (error) {
     res.status(404).json({ success: false, message: 'Invalid request', error: error })
+  }
+})
+
+app.patch('/letters/:id', authenticateUser)
+app.patch('/letters/:id', async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const updatedLetter = await Letter.findByIdAndUpdate(id, { letter: req.body.letter})
+    if (updatedLetters) {
+      res.json(updatedLetters)
+    } else {
+      res.status(404).json({ message: 'Kunde inte skicka'})
+    }
+  } catch (error) {
+    res.status(400).json({ message: 'Invalid request'})
   }
 })
 
