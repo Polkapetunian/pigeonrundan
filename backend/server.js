@@ -60,11 +60,7 @@ const artWorkSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  location: {
-    type: {
-      type: mongoose.Types.Decimal128,
-      type: mongoose.Types.Decimal128 }    
-  },
+  location: { type: Object },
   clue: {
     type: String,
     required: true
