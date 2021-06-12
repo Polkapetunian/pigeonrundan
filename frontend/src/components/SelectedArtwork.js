@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import ResponsiveImage from './ResponsiveImage'
+
 import BackButton from './BackButton'
 
 import { ARTWORK_URL } from '../reusable/urls'
@@ -25,21 +27,20 @@ const SelectedArtworks = () => {
 
     //`${ARTWORK_URL}/${artworkId}`
 
-    const picSmall = "https://live.staticflickr.com/65535/51239500401_1b095e0f6f_n.jpg"
-    const picMedium = "https://live.staticflickr.com/65535/51239500401_1b095e0f6f_z.jpg"
-    const picLarge = "https://live.staticflickr.com/65535/51239500401_1b095e0f6f_c.jpg"
+    // const picSmall = "https://live.staticflickr.com/65535/51239500401_1b095e0f6f_n.jpg"
+    // const picMedium = "https://live.staticflickr.com/65535/51239500401_1b095e0f6f_z.jpg"
+    // const picLarge = "https://live.staticflickr.com/65535/51239500401_1b095e0f6f_c.jpg"
+
+    // const breakPointSmall = "(min-width: 1025px)"
+    // const breakPointMedium = "(max-width: 1024px)"
+    // const breakPointLarge = "(max-width: 767px)"
 
   return ( 
     selectedArtwork &&
     <div>
       <BackButton/>
      <p>{artworkId}</p>
-     <picture> 	
-      <source srcSet={picSmall} media="(min-width: 1025px)"/>
-      <source srcSet={picMedium} media="(max-width: 1024px)"/>
-      <source srcSet={picLarge} media="(max-width: 767px)"/>
-      <img src={picSmall} alt=""/> 
-    </picture> 
+     <ResponsiveImage/>
      <p>{selectedArtwork.title}</p>
      <p>{selectedArtwork.year}</p>
      <p>{selectedArtwork.clue}</p>

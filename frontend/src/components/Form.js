@@ -7,7 +7,7 @@ import user from '../reducers/user'
 
 import { API_URL } from '../reusable/urls'
 
-const Form = ({ username, setUsername, email, setEmail, password, setPassword, mode, title, link, linkDescription }) => {
+const Form = ({ username, setUsername, password, setPassword, mode, title, link, linkDescription }) => {
 
   const accessToken = useSelector(store => store.user.accessToken)
   const errors = useSelector(store => store.user.errors)
@@ -28,7 +28,7 @@ const Form = ({ username, setUsername, email, setEmail, password, setPassword, m
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ username, email, password })
+      body: JSON.stringify({ username, password })
     }
     fetch(API_URL(mode), config)
       .then(res => res.json())
@@ -55,25 +55,16 @@ const Form = ({ username, setUsername, email, setEmail, password, setPassword, m
       <form className="registration-form" onSubmit={onFormSubmit}>
         <label htmlFor="username">
           Username
-      </label>
+        </label>
         <input
           type="text"
           id="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-        />
-        <label htmlFor="email">
-          Email
-      </label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+          />
         <label htmlFor="password">
           Password
-      </label>
+        </label>
         <input
           type="password"
           id="password"

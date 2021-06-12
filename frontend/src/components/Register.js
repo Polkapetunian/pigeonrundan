@@ -4,7 +4,6 @@ import Form from './Form'
 
 const Register = () => {
   const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   return (
@@ -12,8 +11,6 @@ const Register = () => {
       <Form
         username={username}
         setUsername={setUsername}
-        email={email}
-        setEmail={setEmail}
         password={password}
         setPassword={setPassword}
         mode="users"
