@@ -100,6 +100,18 @@ const artWorkSchema = new mongoose.Schema({
   correctAnswer: {
     type: String,
     required: true
+  },
+  imgSrcMob: {
+    type: String,
+    required: true
+  },
+  imgSrcTabl: {
+    type: String,
+    required: true
+  },
+  imgSrcDesk: {
+    type: String,
+    required: true
   }
 })
 
