@@ -10,7 +10,7 @@ const Container = styled.nav`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
-  background-color: #EAD8C6;
+  background-color: #f1dbb3;
   padding: 10px;
   box-sizing: border-box;
   color: white;

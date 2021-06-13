@@ -6,6 +6,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import Main from './pages/Main'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Header from './components/Header'
 
 import user from './reducers/user'
 import artwork from './reducers/artwork'
@@ -20,11 +21,12 @@ export const App = () => {
     <div>
       <BrowserRouter>
         <Provider store={store}>
-          <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register}/>
-            <Route exact path="/map" component={Main} />
-          </Switch>
+          <Header/>
+            <Switch>
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register}/>
+              <Route exact path="/map" component={Main} />
+            </Switch>
         </Provider>
       </BrowserRouter>
     </div>

@@ -38,22 +38,12 @@ const SelectedArtworks = () => {
         
     }, [])
 
-    //`${ARTWORK_URL}/${artworkId}`
-
-    // const picSmall = "https://live.staticflickr.com/65535/51239500401_1b095e0f6f_n.jpg"
-    // const picMedium = "https://live.staticflickr.com/65535/51239500401_1b095e0f6f_z.jpg"
-    // const picLarge = "https://live.staticflickr.com/65535/51239500401_1b095e0f6f_c.jpg"
-
-    // const breakPointSmall = "(min-width: 1025px)"
-    // const breakPointMedium = "(max-width: 1024px)"
-    // const breakPointLarge = "(max-width: 767px)"
-
   return ( 
     selectedArtwork &&
     <Container>
       <BackButton/>
      <p>{artworkId}</p>
-     <ResponsiveImage/>
+     <ResponsiveImage imgSrcMob={selectedArtwork.imgSrcMob} imgSrcTabl={selectedArtwork.imgSrcTabl} imgSrcDesk={selectedArtwork.imgSrcDesk} />
      <Text>{selectedArtwork.title}</Text>
      <Text>{selectedArtwork.year}</Text>
      <Text>{selectedArtwork.clue}</Text>

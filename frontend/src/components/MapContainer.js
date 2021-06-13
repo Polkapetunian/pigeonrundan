@@ -14,16 +14,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0;
-  @media (max-width: 767px) {
-    padding: 5px;
-  }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    padding: 20px;
-  }
-  @media (min-width: 1025px) {
-    padding: 20px;
-  }
 `
+//Don'd add padding to this container - destroys centering and navbar position
 
 const MapContainer = () => {
 

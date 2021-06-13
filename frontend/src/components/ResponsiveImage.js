@@ -26,13 +26,9 @@ outline: 4px solid #4B3D2D;
   }
 `
 
-const picSmall = "https://live.staticflickr.com/65535/51239500401_1b095e0f6f_n.jpg"
-const picMedium = "https://live.staticflickr.com/65535/51239500401_1b095e0f6f_w.jpg"
-const picLarge = "https://live.staticflickr.com/65535/51239500401_1b095e0f6f_z.jpg"
-
-const ResponsiveImage = () => {
+const ResponsiveImage = ({imgSrcMob, imgSrcTabl, imgSrcDesk}) => {
   return(
-    <Image src={picSmall} srcSet={`${picSmall} 320w, ${picMedium} 400w, ${picLarge} 640w`} /> 
+    <Image src={imgSrcMob} srcSet={`${imgSrcMob} 320w, ${imgSrcTabl} 400w, ${imgSrcDesk} 640w`} /> 
     
   )
 }
