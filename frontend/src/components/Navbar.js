@@ -13,7 +13,7 @@ const Container = styled.nav`
   background-color: #f1dbb3;
   padding: 10px;
   box-sizing: border-box;
-  color: white;
+  color: white; 
 `;
 
 const Navbar = ({ destinations }) => {

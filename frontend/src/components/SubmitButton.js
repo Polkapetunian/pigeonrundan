@@ -2,12 +2,11 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import styled from "styled-components/macro"
 
-import artwork from '../reducers/artwork'
 
 const Button = styled.button`
-background-color: #f1dbb3; 
+background-color: #4B3D2D; 
 border: 1px solid #4B3D2D;
-color: #4B3D2D;
+color: #f1dbb3;
 padding: 5px 5px;
 text-align: center;
 text-decoration: none;
@@ -17,13 +16,13 @@ font-weight: 700;
 margin:0 0 20px 20px;
 align-self: flex-start;
 `
-const BackButton = () => {
+const SubmitButton = () => {
   const dispatch = useDispatch()
 
   return (
-    <Button onClick={() => dispatch(artwork.actions.setArtworkId(null))} >
-    Tillbaka
+    <Button type="submit" onClick={(event) => event.preventDefault} >
+    Skicka
     </Button>
   )
 }
-export default BackButton
+export default SubmitButton

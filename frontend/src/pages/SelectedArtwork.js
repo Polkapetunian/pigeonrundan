@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 import ResponsiveImage from '../components/ResponsiveImage'
 import BackButton from '../components/BackButton'
+import SubmitButton from '../components/SubmitButton'
 
 import { ARTWORK_URL } from '../reusable/urls'
 import artwork from '../reducers/artwork'
@@ -13,14 +14,36 @@ const Container = styled.div `
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding: 75px 0 0 0;
+  margin: 0;
+`
+const ArtistContainer = styled.div`
+display: flex;
+flex-direction: row;
 `
 
 const Text = styled.p`
-  width: 80%;
+  margin:10px 0 0 0;
+`
+const TextClue = styled.p`
+  margin: 10px 20px;
 `
 
+const Span = styled.span`
+  margin:10px 0 0 0;
+`
+const Header = styled.h2`
+font-weight: 700px;
+margin: 3px;
+`
+const Input = styled.input`
+width: 40px;
+height: 20px;
+background-color: #f1dbb3;
+border: 1px solid #4B3D2D;
+`
 
 const SelectedArtworks = () => {
   const artworkId = useSelector((store) => store.artwork.artworkId)
@@ -32,8 +55,7 @@ const SelectedArtworks = () => {
       fetch(`https://konstrundan.herokuapp.com/artworks/Karlstad/${artworkId}`)
         .then((res) => res.json())
         .then((data) => {
-          dispatch(artwork.actions.setSelectedArtwork(data))
-         
+          dispatch(artwork.actions.setSelectedArtwork(data)) 
         })
         
     }, [])
@@ -42,17 +64,21 @@ const SelectedArtworks = () => {
     selectedArtwork &&
     <Container>
       <BackButton/>
-     <p>{artworkId}</p>
-     <ResponsiveImage imgSrcMob={selectedArtwork.imgSrcMob} imgSrcTabl={selectedArtwork.imgSrcTabl} imgSrcDesk={selectedArtwork.imgSrcDesk} />
-     <Text>{selectedArtwork.title}</Text>
-     <Text>{selectedArtwork.year}</Text>
-     <Text>{selectedArtwork.clue}</Text>
+      <ResponsiveImage imgSrcMob={selectedArtwork.imgSrcMob} imgSrcTabl={selectedArtwork.imgSrcTabl} imgSrcDesk={selectedArtwork.imgSrcDesk} />
+      <Text>Konstverk nr {artworkId}</Text>
+      <Header>{selectedArtwork.title}</Header>
+      <ArtistContainer>
+        <Text>Av {selectedArtwork.artist}, </Text>
+        <Span> {selectedArtwork.year}</Span>
+      </ArtistContainer>
+      <TextClue>{selectedArtwork.clue}</TextClue>
       <form>
         <label> Bokstav:
-          <input
-          type= "text"> 
-          </input>
+          <Input
+          type= "text" 
+          />
         </label>
+        <SubmitButton/>
       </form>
     </Container>
   )

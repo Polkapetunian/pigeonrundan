@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 import artwork from '../reducers/artwork'
 import city from '../reducers/city'

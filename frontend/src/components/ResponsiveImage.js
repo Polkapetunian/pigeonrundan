@@ -2,8 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Image = styled.img`
-border: 6px solid #E8DACF;
-outline: 4px solid #4B3D2D;
+border: 6px solid #4B3D2D;
+outline: 4px solid #f1dbb3;
+box-sizing: border-box;
 &::before {
   background: none;
   border: 4px solid #4B3D2D;
@@ -16,7 +17,7 @@ outline: 4px solid #4B3D2D;
   z-index: 1;
 }
   @media (max-width: 767px) {
-    width: 320px;
+    width: 280px;
   }
   @media (min-width: 768px) and (max-width: 1024px) {
     width: 400px;

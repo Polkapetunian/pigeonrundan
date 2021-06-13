@@ -4,9 +4,6 @@ import { useDispatch } from 'react-redux'
 
 import city from '../reducers/city'
 
-
-
-
 const Cities = () => {
   const dispatch = useDispatch()
 

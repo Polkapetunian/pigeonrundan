@@ -10,6 +10,7 @@ const Container = styled.nav`
   font-family: 'Viaoda Libre', cursive;
   font-size: 30px;
   padding-left: 10px;
+  margin:0;
 `
 
 const MainHeader = styled.h1`
