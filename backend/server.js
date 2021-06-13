@@ -39,9 +39,41 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: () => crypto.randomBytes(128).toString('hex')
   }
+  // city: {
+  //   type: String
+  // },
+  // answers: [{
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "Answer"
+  // }]
 })
 
 const User = mongoose.model('User', userSchema)
+
+
+
+// const artWorksForCity = (city) => {
+//   city="Karlstad"
+//   if (city = "Karlstad") {
+//     return "ArtWorkKarlstad"
+//   } else if (city = "Uppsala") {
+//     return "ArtWorkUppsala"
+//   }
+// }
+
+// const answerSchema = new mongoose.Schema({
+//   answer: {
+//     type: String,
+//     required: true,
+//     maxlength: 1
+//   },
+//   id: {
+//     type: Number,
+//     ref: artWorksForCity(city)
+//   },
+// })
+
+// const Answer = mongoose.model('Answer', answerSchema)
 
 const artWorkSchema = new mongoose.Schema({
   id: {
@@ -68,12 +100,6 @@ const artWorkSchema = new mongoose.Schema({
   correctAnswer: {
     type: String,
     required: true
-  }
-})
-
-const Letter = mongoose.model('Letter', {
-  letter: {
-    type: String
   }
 })
 

@@ -9,7 +9,10 @@
       "lng": 13.4867216
     },
     "clue": "Vilken är den fjärde bokstaven i översta raden på skylten till denna skulptur?",
-    "correctAnswer": "G"
+    "correctAnswer": "G",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51235841947_576cf6487e_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51235841947_576cf6487e_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51235841947_576cf6487e_z.jpg"
   },
   {
     "id": 2,
@@ -21,7 +24,10 @@
       "lng": 13.4929866
     },
     "clue": "Vilken är den andra bokstaven i den andra raden på skylten till denna skulptur?",
-    "correctAnswer": "U"
+    "correctAnswer": "U",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51237328989_ab6e618c47_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51237328989_ab6e618c47_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51237328989_ab6e618c47_z.jpg"
   },
   {
     "id": 3,
@@ -33,7 +39,10 @@
       "lng": 13.4872158
     },
     "clue": "Vilken är den första bokstaven på skyltens tredje rad?",
-    "correctAnswer": "I"
+    "correctAnswer": "I",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51235841847_750b5b36c8_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51235841847_750b5b36c8_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51235841847_750b5b36c8_z.jpg"
   },
   {
     "id": 4,
@@ -45,7 +54,10 @@
       "lng": 13.5016555
     },
     "clue": "Vilken är den sista bokstaven på andra raden?",
-    "correctAnswer": "N"
+    "correctAnswer": "N",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51236756683_ca3ecff8c1_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51236756683_ca3ecff8c1_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51236756683_ca3ecff8c1_z.jpg"
   },
   {
     "id": 5,
@@ -57,7 +69,10 @@
       "lng": 13.5019867
     },
     "clue": "På skylten står två skapare nämnda. Vilken är den fjärde bokstaven i den första skaparens namn?",
-    "correctAnswer": "A"
+    "correctAnswer": "A",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51237613895_685d73d887_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51237613895_685d73d887_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51237613895_685d73d887_z.jpg"
   },
   {
     "id": 6,
@@ -69,7 +84,10 @@
       "lng": 13.4923274
     },
     "clue": "Till höger under soluret står IAKTTAG, följt av ett annat ord. Vilken bokstav börjar det andra ordet på?",
-    "correctAnswer": "S"
+    "correctAnswer": "S",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51236550406_218f50770d_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51236550406_218f50770d_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51236550406_218f50770d_z.jpg"
   },
   {
     "id": 7,
@@ -81,7 +99,10 @@
       "lng": 13.5058025
     },
     "clue": "Vilken bokstav är den sista på andra raden på skylten?",
-    "correctAnswer": "V"
+    "correctAnswer": "V",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51235841897_428c8f5448_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51235841897_428c8f5448_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51235841897_428c8f5448_z.jpg"
   },
   {
     "id": 8,
@@ -93,7 +114,10 @@
       "lng": 13.4992163
     },
     "clue": "Under statyn står att läsa \"Han grundade staden 1854\" på latin. Vilken är den sista bokstaven i den latinska meningen?",
-    "correctAnswer": "T"
+    "correctAnswer": "T",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51237329034_be038f8871_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51237329034_be038f8871_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51237329034_be038f8871_z.jpg"
   },
   {
     "id": 9,
@@ -105,7 +129,10 @@
       "lng": 13.4997129
     },
     "clue": "Vilken är den första bokstaven i namnet på värdshusflickan som denna skulptur föreställer?",
-    "correctAnswer": "E"
+    "correctAnswer": "E",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51237613925_9c8563b311_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51237613925_9c8563b311_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51237613925_9c8563b311_z.jpg"
   },
   {
     "id": 10,
@@ -117,7 +144,10 @@
       "lng": 13.4986457
     },
     "clue": "Vilken är den första bokstaven i den sistan raden på skylten till denna skulptur?",
-    "correctAnswer": "A"
+    "correctAnswer": "A",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51237329064_40c6522651_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51237329064_40c6522651_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51237329064_40c6522651_z.jpg"
   },
   {
     "id": 11,
@@ -129,7 +159,10 @@
       "lng": 13.5026428
     },
     "clue": "Vilken är den femte bokstaven i den andra raden på skylten till denna skulptur?",
-    "correctAnswer": "I"
+    "correctAnswer": "I",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51236550456_2724f3554b_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51236550456_2724f3554b_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51236550456_2724f3554b_z.jpg"
   },
   {
     "id": 12,
@@ -141,7 +174,10 @@
       "lng": 13.5064516
     },
     "clue": "Detta är en skulptur av Sveno Elfdalius. På skulpturen står ännu ett av hans namn. Vad börjar det namnet med för bokstav?",
-    "correctAnswer": "C"
+    "correctAnswer": "C",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51236756698_a43ff78773_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51236756698_a43ff78773_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51236756698_a43ff78773_z.jpg"
   },
   {
     "id": 13,
@@ -153,7 +189,10 @@
       "lng": 13.502169
     },
     "clue": "Vilken är den sista bokstaven på andra raden på skylten i marken bredvid detta konstverk?",
-    "correctAnswer": "D"
+    "correctAnswer": "D",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51237613810_c0ec25ce58_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51237613810_c0ec25ce58_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51237613810_c0ec25ce58_z.jpg"
   },
   {
     "id": 14,
@@ -165,7 +204,10 @@
       "lng": 13.5121201
     },
     "clue": "Skulpturen har ett särskilt märke till vänster på skylten. Vad är första bokstaven på märket?",
-    "correctAnswer": "C"
+    "correctAnswer": "C",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51237613880_b5a6a452de_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51237613880_b5a6a452de_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51237613880_b5a6a452de_z.jpg"
   },
   {
     "id": 15,
@@ -177,7 +219,10 @@
       "lng": 13.5076532
     },
     "clue": "I den andra raden på skulpturens skylt förekommer en bokstav två gånger. Vilken bokstav är det?",
-    "correctAnswer": "P"
+    "correctAnswer": "P",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51236550461_68f1943ba5_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51236550461_68f1943ba5_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51236550461_68f1943ba5_z.jpg"
   },
   {
     "id": 16,
@@ -189,7 +234,10 @@
       "lng": 13.498823
     },
     "clue": "Vilken bokstav är den fjärde att hitta på skulpturens skylts första rad?",
-    "correctAnswer": "L"
+    "correctAnswer": "L",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51235841922_c3cf368bb0_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51235841922_c3cf368bb0_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51235841922_c3cf368bb0_z.jpg"
   },
   {
     "id": 17,
@@ -201,7 +249,10 @@
       "lng": 13.501831
     },
     "clue": "På bordet av denna skulptur finns en dikt. Vilken är den åttonde bokstaven i diktens tredje rad?",
-    "correctAnswer": "Y"
+    "correctAnswer": "Y",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51236550291_4f942ed722_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51236550291_4f942ed722_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51236550291_4f942ed722_z.jpg"
   },
   {
     "id": 18,
@@ -213,7 +264,10 @@
       "lng": 13.501843
     },
     "clue": "På skylten på husfasaden en bit från denna skulptur står det vilken månad statyn restes. Vilken bokstav börjar denna månad med?",
-    "correctAnswer": "A"
+    "correctAnswer": "A",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51235841872_8b397ea157_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51235841872_8b397ea157_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51235841872_8b397ea157_z.jpg"
   },
   {
     "id": 19,
@@ -225,7 +279,10 @@
       "lng": 13.502403
     },
     "clue": "Längst ner på skylten till Fredsmonumentet finns en mening där alla ord börjar på samma bokstav, vilken?",
-    "correctAnswer": "F"
+    "correctAnswer": "F",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51236550296_f1d98d80d0_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51236550296_f1d98d80d0_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51236550296_f1d98d80d0_z.jpg"
   },
   {
     "id": 20,
@@ -237,6 +294,9 @@
       "lng": 13.497686
     },
     "clue": "På detta konstverk kan man på sidan som vetter mot älven läsa en textrad. Vilken är den sista bokstaven i denna textrad?",
-    "correctAnswer": "I"
+    "correctAnswer": "I",
+    "imgSrcMob": "https://live.staticflickr.com/65535/51237329114_2096d28c06_n.jpg",
+    "imgSrcTabl": "https://live.staticflickr.com/65535/51237329114_2096d28c06_w.jpg",
+    "imgSrcDesk": "https://live.staticflickr.com/65535/51237329114_2096d28c06_z.jpg"
   }
 ]
