@@ -1,14 +1,37 @@
-import React, { useEffect } from 'react'
-import { Link, useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import React, { useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import styled from "styled-components";
 
-import city from '../reducers/city'
+import city from "../reducers/city";
+
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Cities = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const city1 = "Karlstad"
-  const city2 = "Uppsala"
+  const cities = [
+    {
+      city: "Karlstad",
+      center: {
+        lat: 59.40218,
+        lng: 13.511498,
+      },
+    },
+    {
+      city: "Uppsala",
+      center: {
+        lat: 59.858562,
+        lng: 17.638928,
+      },
+    },
+  ];
 
   // useEffect(() => {
   //   if (city !== null) {
@@ -16,20 +39,30 @@ const Cities = () => {
   //   }
   // }, [city, history])
 
-  return(
-    <div>
+  return (
+    <Container>
       <p>Välj stad!</p>
-      <Link to="/">
-      <button onClick={() => dispatch(city.actions.setCurrentCity(city1))}>
+
+      {cities.map((singleCity) => (
+        <Link to="/map">
+          <button
+            onClick={() => dispatch(city.actions.setCurrentCity(singleCity))}
+          >
+            {singleCity.city}
+          </button>
+        </Link>
+      ))}
+      {/* <Link to="/map">
+      <button onClick={() => dispatch(city.actions.setCurrentCity("Karlstad"))}>
         Karlstad
       </button>
       </Link>
-      <Link to="/">
+      <Link to="/map">
       <button onClick={() => dispatch(city.actions.setCurrentCity(city2))}>
         Uppsala
       </button>
-      </Link>
-    </div>
-  )
-}
-export default Cities
+      </Link> */}
+    </Container>
+  );
+};
+export default Cities;

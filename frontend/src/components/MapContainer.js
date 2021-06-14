@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
-import styled from 'styled-components/macro'
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import styled from "styled-components/macro";
 
-import artwork from '../reducers/artwork'
-import city from '../reducers/city'
+import artwork from "../reducers/artwork";
+import city from "../reducers/city";
+import { API_URL } from "../reusable/urls";
 
 const Container = styled.div`
   width: 100vw;
@@ -14,57 +16,60 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0;
-`
+`;
 //Don'd add padding to this container - destroys centering and navbar position
 
 const MapContainer = () => {
+  const [locations, setLocations] = useState([]);
+  const currentCity = useSelector((store) => store.city.currentCity);
+  console.log(currentCity);
 
-  const dispatch = useDispatch()
-  const [locations, setLocations] = useState([])
-  
-  const mapStyles = {        
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const mapStyles = {
     height: "75vh",
-    width: "90%"};
-  
-  const defaultCenterKarlstad = {
-    lat: 59.402180, lng: 13.511498
-  }
-
-  const defaultCenterUppsala = {
-    lat: 59.858562, lng: 17.638928
-  }
+    width: "90%",
+  };
 
   useEffect(() => {
-    fetch("https://konstrundan.herokuapp.com/artworks/Karlstad/")
-      .then((res) => res.json())
-      .then(json => setLocations(json))  
-  }, [])
+    if (!currentCity) {
+      history.push("/cities");
+    }
+    if (currentCity) {
+      fetch(API_URL(currentCity.city))
+        .then((res) => res.json())
+        .then((json) => setLocations(json));
+    }
+  }, []);
 
-   console.log(locations)
-  
+  console.log(locations);
+
   return (
-    <Container>
-     <LoadScript
-       googleMapsApiKey={process.env.REACT_APP_API_KEY}>
-        <GoogleMap
-          mapContainerStyle={mapStyles}
-          zoom={13}
-          center={defaultCenterKarlstad}>
-        {
-          locations.map(item => {
-            return(
-            <Marker
-              key={item.title}
-              position={item.location}
-              onClick={() => dispatch(artwork.actions.setArtworkId(item.id))}
-            />
-                )
-              })
-            }
+    currentCity && (
+      <Container>
+        <LoadScript googleMapsApiKey={process.env.REACT_APP_API_KEY}>
+          <GoogleMap
+            mapContainerStyle={mapStyles}
+            zoom={12}
+            center={currentCity.center}
+          >
+            {locations.map((item) => {
+              return (
+                <Marker
+                  key={item.title}
+                  position={item.location}
+                  onClick={() =>
+                    dispatch(artwork.actions.setArtworkId(item.id))
+                  }
+                />
+              );
+            })}
           </GoogleMap>
-     </LoadScript>
-    </Container>
-  )
-}
+        </LoadScript>
+      </Container>
+    )
+  );
+};
 
-export default MapContainer
+export default MapContainer;
