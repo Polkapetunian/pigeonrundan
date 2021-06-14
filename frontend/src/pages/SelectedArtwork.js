@@ -8,6 +8,7 @@ import SubmitButton from '../components/SubmitButton'
 
 import { ARTWORK_URL } from '../reusable/urls'
 import artwork from '../reducers/artwork'
+import { InfoBox } from '@react-google-maps/api'
 
 const Container = styled.div `
   width: 100vw;
@@ -28,7 +29,11 @@ const Text = styled.p`
   margin:10px 0 0 0;
 `
 const TextClue = styled.p`
-  margin: 10px 20px;
+  margin: 10px 30px;
+`
+const Info = styled.p`
+margin: 10px 30px;
+  
 `
 
 const Span = styled.span`
@@ -64,7 +69,10 @@ const SelectedArtworks = () => {
     selectedArtwork &&
     <Container>
       <BackButton/>
-      <ResponsiveImage imgSrcMob={selectedArtwork.imgSrcMob} imgSrcTabl={selectedArtwork.imgSrcTabl} imgSrcDesk={selectedArtwork.imgSrcDesk} />
+      <Info>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </Info>
+      {/* <ResponsiveImage imgSrcMob={selectedArtwork.imgSrcMob} imgSrcTabl={selectedArtwork.imgSrcTabl} imgSrcDesk={selectedArtwork.imgSrcDesk} /> */}
       <Text>Konstverk nr {artworkId}</Text>
       <Header>{selectedArtwork.title}</Header>
       <ArtistContainer>
