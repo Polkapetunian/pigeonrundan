@@ -11,7 +11,24 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 40px;
 `;
+
+const Button = styled.button`
+background-color: #f1dbb3; 
+border: 1px solid #4B3D2D;
+color: #4B3D2D;
+padding: 8px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 30px;
+font-weight: 700;
+margin:0 0 20px 20px;
+align-self: flex-start;
+`
 
 const Cities = () => {
   const dispatch = useDispatch();
@@ -44,12 +61,11 @@ const Cities = () => {
       <p>Välj stad!</p>
 
       {cities.map((singleCity) => (
-        <Link to="/map">
-          <button
-            onClick={() => dispatch(city.actions.setCurrentCity(singleCity))}
-          >
+        <Link to="/map" key={cities.center}>
+          <Button
+            onClick={() => dispatch(city.actions.setCurrentCity(singleCity))}>
             {singleCity.city}
-          </button>
+          </Button>
         </Link>
       ))}
       {/* <Link to="/map">
