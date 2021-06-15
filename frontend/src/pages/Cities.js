@@ -45,7 +45,7 @@ const Cities = () => {
 
       {cities.map((singleCity) => (
         <Link to="/map">
-          <button
+          <  button key={city}
             onClick={() => dispatch(city.actions.setCurrentCity(singleCity))}
           >
             {singleCity.city}

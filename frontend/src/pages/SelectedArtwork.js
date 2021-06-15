@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components/macro";
 
@@ -50,6 +50,7 @@ const Input = styled.input`
 `;
 
 const SelectedArtworks = () => {
+  const [newAnswer, setNewAnswer] = useState('')
   const artworkId = useSelector((store) => store.artwork.artworkId);
   const selectedArtwork = useSelector((store) => store.artwork.selectedArtwork);
   const currentCity = useSelector((store) => store.city.currentCity.city);
@@ -62,6 +63,30 @@ const SelectedArtworks = () => {
         dispatch(artwork.actions.setSelectedArtwork(data));
       });
   }, []);
+  //Här vill vi jämföra den skickade bokstaven med det rätta svaret för frågan med det id:t. Om de matchar vill vi skicka till db att det konstverket isDone för den usern.
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    if (newAnswer.toLowerCase() === selectedArtwork.correctAnswer.toLowerCase()) {
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: newThought })
+      };
+
+      fetch(API_URL, options)
+        .then(response => response.json())
+        .then(() => fetchThoughts())
+      setNewThought("");
+    }
+  }
+
+
+
+  const onNewAnswerChange = (event) => {
+    setNewAnswer(event.target.value)
+  }
 
   return (
     selectedArtwork && (
@@ -86,11 +111,11 @@ const SelectedArtworks = () => {
           <Span> {selectedArtwork.year}</Span>
         </ArtistContainer>
         <TextClue>{selectedArtwork.clue}</TextClue>
-        <form>
+        <form onSubmit={onFormSubmit}>
           <label>
             {" "}
             Bokstav:
-            <Input type="text" />
+            <Input type="text" maxLength="1" value={newAnswer} onChange={onNewAnswerChange} />
           </label>
           <SubmitButton />
         </form>

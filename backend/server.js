@@ -38,42 +38,18 @@ const userSchema = new mongoose.Schema({
   accessToken: {
     type: String,
     default: () => crypto.randomBytes(128).toString('hex')
-  }
-  // city: {
-  //   type: String
-  // },
-  // answers: [{
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "Answer"
-  // }]
+  },
+  doneArtWorksKarlstad: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ArtWorkKarlstad"
+  }],
+  doneArtWorksUppsala: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ArtWorkUppsala"
+  }]
 })
 
 const User = mongoose.model('User', userSchema)
-
-
-
-// const artWorksForCity = (city) => {
-//   city="Karlstad"
-//   if (city = "Karlstad") {
-//     return "ArtWorkKarlstad"
-//   } else if (city = "Uppsala") {
-//     return "ArtWorkUppsala"
-//   }
-// }
-
-// const answerSchema = new mongoose.Schema({
-//   answer: {
-//     type: String,
-//     required: true,
-//     maxlength: 1
-//   },
-//   id: {
-//     type: Number,
-//     ref: artWorksForCity(city)
-//   },
-// })
-
-// const Answer = mongoose.model('Answer', answerSchema)
 
 const artWorkSchema = new mongoose.Schema({
   id: {
@@ -96,20 +72,8 @@ const artWorkSchema = new mongoose.Schema({
   clue: {
     type: String,
     required: true
-  } ,
+  },
   correctAnswer: {
-    type: String,
-    required: true
-  },
-  imgSrcMob: {
-    type: String,
-    required: true
-  },
-  imgSrcTabl: {
-    type: String,
-    required: true
-  },
-  imgSrcDesk: {
     type: String,
     required: true
   }
@@ -174,22 +138,23 @@ app.get('/artworks/Uppsala', async (req, res) => {
   res.json(artWorks)
 })
 
-app.get('/artworks/Karlstad/:id', async (req, res) => { 
-const {id} = req.params
-const selectedArtwork= await ArtWorkKarlstad.findOne({id: +id})
+app.get('/artworks/Karlstad/:id', async (req, res) => {
+  const { id } = req.params
+  const selectedArtwork = await ArtWorkKarlstad.findOne({ id: +id })
   if (selectedArtwork) {
     res.json(selectedArtwork)
   } else {
-    res.status(404).json({ error: 'Konstverket du söker finns inte i databasen.'})
+    res.status(404).json({ error: 'Konstverket du söker finns inte i databasen.' })
   }
 })
 
-app.get('/artworks/Uppsala/:id', async (req, res) => { const {id} = req.params
-const selectedArtwork= await ArtWorkUppsala.findOne({id: +id})
+app.get('/artworks/Uppsala/:id', async (req, res) => {
+  const { id } = req.params
+  const selectedArtwork = await ArtWorkUppsala.findOne({ id: +id })
   if (selectedArtwork) {
     res.json(selectedArtwork)
   } else {
-    res.status(404).json({ error: 'Konstverket du söker finns inte i databasen.'})
+    res.status(404).json({ error: 'Konstverket du söker finns inte i databasen.' })
   }
 })
 
@@ -214,6 +179,16 @@ app.post('/users', async (req, res) => {
   }
 })
 
+//Patch doneartwork to user
+app.patch('/users/:id'), async (req, res) => {
+  const { }
+  try {
+
+  }
+}
+
+
+
 app.post('/sessions', async (req, res) => {
   const { username, password } = req.body
 
@@ -232,22 +207,6 @@ app.post('/sessions', async (req, res) => {
     }
   } catch (error) {
     res.status(404).json({ success: false, message: 'Invalid request', error: error })
-  }
-})
-
-app.patch('/letters/:id', authenticateUser)
-app.patch('/letters/:id', async (req, res) => {
-  const { id } = req.params
-
-  try {
-    const updatedLetter = await Letter.findByIdAndUpdate(id, { letter: req.body.letter})
-    if (updatedLetters) {
-      res.json(updatedLetters)
-    } else {
-      res.status(404).json({ message: 'Kunde inte skicka'})
-    }
-  } catch (error) {
-    res.status(400).json({ message: 'Invalid request'})
   }
 })
 

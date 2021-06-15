@@ -20,8 +20,8 @@ const SubmitButton = () => {
   const dispatch = useDispatch()
 
   return (
-    <Button type="submit" onClick={(event) => event.preventDefault} >
-    Skicka
+    <Button type="submit" >
+      Skicka
     </Button>
   )
 }
