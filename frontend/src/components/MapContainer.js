@@ -6,7 +6,7 @@ import styled from "styled-components/macro";
 
 import artwork from "../reducers/artwork";
 import city from "../reducers/city";
-import { API_URL } from "../reusable/urls";
+import { MAP_URL } from "../reusable/urls";
 
 const Container = styled.div`
   width: 100vw;
@@ -37,7 +37,7 @@ const MapContainer = () => {
       history.push("/cities");
     }
     if (currentCity) {
-      fetch(API_URL(currentCity.city))
+      fetch(MAP_URL(currentCity.city))
         .then((res) => res.json())
         .then((json) => setLocations(json));
     }
