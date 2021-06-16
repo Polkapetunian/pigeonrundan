@@ -68,7 +68,7 @@ const SelectedArtworks = () => {
     event.preventDefault();
     if (newAnswer.toLowerCase() === selectedArtwork.correctAnswer.toLowerCase()) {
       const options = {
-        method: 'POST',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -81,8 +81,6 @@ const SelectedArtworks = () => {
       setNewThought("");
     }
   }
-
-
 
   const onNewAnswerChange = (event) => {
     setNewAnswer(event.target.value)

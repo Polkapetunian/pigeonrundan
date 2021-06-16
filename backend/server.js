@@ -180,10 +180,13 @@ app.post('/users', async (req, res) => {
 })
 
 //Patch doneartwork to user
-app.patch('/users/:id'), async (req, res) => {
-  const { }
+app.patch('/users/username'), async (req, res) => {
+  const { username, currentCity, artWorkId }
   try {
-
+    if (currentCity === "Karlstad") {
+      update = {}
+    }
+    const user = await User.findOneAndUpdate({ username, update })
   }
 }
 
@@ -193,7 +196,7 @@ app.post('/sessions', async (req, res) => {
   const { username, password } = req.body
 
   try {
-    const user = await User.findOne({ username })
+    const user = await User.findOne({ username },)
 
     if (user && bcrypt.compareSync(password, user.password)) {
       res.json({
