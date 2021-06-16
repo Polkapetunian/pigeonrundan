@@ -66,24 +66,24 @@ const SelectedArtworks = () => {
       });
   }, []);
 
-  const onFormSubmit = (event) => {
-    event.preventDefault();
-    if (newAnswer.toLowerCase() === selectedArtwork.correctAnswer.toLowerCase()) {
-      const options = {
-        method: 'PATCH',
-        headers: {
-          Authorization: accessToken,
-          'Content-Type': 'application/json'
-        },
-        //We haven't prepared the endpoint cause we don't know what the schema should look like =(, so we don't know what to send
-        body: JSON.stringify({ artworkId })
-      };
+  // const onFormSubmit = (event) => {
+  //   event.preventDefault();
+  //   if (newAnswer.toLowerCase() === selectedArtwork.correctAnswer.toLowerCase()) {
+  //     const options = {
+  //       method: 'PATCH',
+  //       headers: {
+  //         Authorization: accessToken,
+  //         'Content-Type': 'application/json'
+  //       },
+  //       //We haven't prepared the endpoint cause we don't know what the schema should look like =(, so we don't know what to send
+  //       body: JSON.stringify({ artworkId })
+  //     };
 
-      fetch(USER_URL("users"), options)
-        .then(response => response.json())
-        .then((data) => (data));
-    }
-  }
+  //     fetch(USER_URL("users"), options)
+  //       .then(response => response.json())
+  //       .then((data) => (data));
+  //   }
+  // }
 
   const onNewAnswerChange = (event) => {
     setNewAnswer(event.target.value)
@@ -107,7 +107,9 @@ const SelectedArtworks = () => {
           <Text>Av {selectedArtwork.artist}, {selectedArtwork.year}</Text>
         </ArtistContainer>
         <TextClue>{selectedArtwork.clue}</TextClue>
-        <form onSubmit={onFormSubmit}>
+        <form 
+        // onSubmit={onFormSubmit}
+        >
           <label>
             {" "}
             Bokstav:

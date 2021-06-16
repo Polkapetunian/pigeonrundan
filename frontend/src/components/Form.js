@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 import user from '../reducers/user'
 
-import { USER_URL } from '../reusable/urls'
+// import { USER_URL } from '../reusable/urls'
 
 const Form = ({ username, setUsername, password, setPassword, mode, title, link, linkDescription }) => {
 
@@ -30,7 +30,8 @@ const Form = ({ username, setUsername, password, setPassword, mode, title, link,
       },
       body: JSON.stringify({ username, password })
     }
-    fetch(USER_URL(mode), config)
+    //fetch(USER_URL(mode), config)
+    fetch(("https://konstrundan.herokuapp.com/sessions"), config)
       .then(res => res.json())
       .then(data => {
         if (data.success === true) {
