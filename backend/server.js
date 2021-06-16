@@ -243,15 +243,17 @@ app.post('/sessions', async (req, res) => {
   }
 })
 
-app.patch('/users/username'), async (req, res) => {
+app.patch('/users/username', async (req, res) => {
   const { username, currentCity, artWorkId }
   try {
     if (currentCity === "Karlstad") {
       update= { }
     }
     const user = await User.findOneAndUpdate({ username, update })  
+  } catch (error) {
+  res.status(404).json({ success: false, message: 'Invalid request', error: error })
   }
-}
+})
 
 
 // Start the server

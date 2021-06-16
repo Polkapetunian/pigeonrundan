@@ -6,7 +6,7 @@ import ResponsiveImage from "../components/ResponsiveImage";
 import BackButton from "../components/BackButton";
 import SubmitButton from "../components/SubmitButton";
 
-import { ARTWORK_URL } from "../reusable/urls";
+import { ARTWORK_URL, USER_URL } from "../reusable/urls";
 import artwork from "../reducers/artwork";
 import { InfoBox } from "@react-google-maps/api";
 
@@ -75,13 +75,13 @@ const SelectedArtworks = () => {
           Authorization: accessToken,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ message: newThought })
+        //We haven't prepared the endpoint cause we don't know what the schema should look like =(, so we don't know what to send
+        body: JSON.stringify({ artworkId })
       };
 
       fetch(USER_URL("users"), options)
         .then(response => response.json())
-        .then(() => fetchThoughts())
-      setNewThought("");
+        .then((data) => (data));
     }
   }
 
@@ -107,11 +107,16 @@ const SelectedArtworks = () => {
           <Text>Av {selectedArtwork.artist}, {selectedArtwork.year}</Text>
         </ArtistContainer>
         <TextClue>{selectedArtwork.clue}</TextClue>
-        <form>
+        <form onSubmit={onFormSubmit}>
           <label>
             {" "}
             Bokstav:
-            <Input type="text" />
+            <Input 
+            type="text"
+            value={newAnswer}
+            onChange={onNewAnswerChange}
+            maxLength = "1"
+             />
           </label>
           <SubmitButton />
         </form>
