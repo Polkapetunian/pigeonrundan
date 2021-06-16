@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components/macro";
 
@@ -55,6 +55,7 @@ const SelectedArtworks = () => {
   const artworkId = useSelector((store) => store.artwork.artworkId);
   const selectedArtwork = useSelector((store) => store.artwork.selectedArtwork);
   const currentCity = useSelector((store) => store.city.currentCity.city);
+  const accessToken = useSelector(store => store.user.accessToken)
 
   const dispatch = useDispatch();
   useEffect(() => {
