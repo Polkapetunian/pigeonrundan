@@ -51,6 +51,7 @@ const Input = styled.input`
 `;
 
 const SelectedArtworks = () => {
+  const [newAnswer, setNewAnswer] = useState('')
   const artworkId = useSelector((store) => store.artwork.artworkId);
   const selectedArtwork = useSelector((store) => store.artwork.selectedArtwork);
   const currentCity = useSelector((store) => store.city.currentCity.city);
@@ -63,6 +64,29 @@ const SelectedArtworks = () => {
         dispatch(artwork.actions.setSelectedArtwork(data));
       });
   }, []);
+
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    if (newAnswer.toLowerCase() === selectedArtwork.correctAnswer.toLowerCase()) {
+      const options = {
+        method: 'PATCH',
+        headers: {
+          Authorization: accessToken,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: newThought })
+      };
+
+      fetch(USER_URL("users"), options)
+        .then(response => response.json())
+        .then(() => fetchThoughts())
+      setNewThought("");
+    }
+  }
+
+  const onNewAnswerChange = (event) => {
+    setNewAnswer(event.target.value)
+  }
 
   return (
     selectedArtwork && (

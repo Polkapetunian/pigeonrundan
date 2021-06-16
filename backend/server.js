@@ -38,19 +38,27 @@ const userSchema = new mongoose.Schema({
   accessToken: {
     type: String,
     default: () => crypto.randomBytes(128).toString('hex')
-  }
-  // city: {
-  //   type: String
-  // },
-  // answers: [{
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "Answer"
-  // }]
+  },
+  doneArtWorksKarlstad: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ArtWorkKarlstad"
+  }],
+  doneArtWorksUppsala: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ArtWorkUppsala"
+  }]
 })
 
 const User = mongoose.model('User', userSchema)
 
-
+// doneArtWorksUppsala [
+//   {artworkId: 1,
+//   isDone: true},
+//   {artworkId: 2,
+//   isDone: false},
+//   {artworkId: 1,
+//   isDone: true},
+// ]
 
 // const artWorksForCity = (city) => {
 //   city="Karlstad"
@@ -235,21 +243,16 @@ app.post('/sessions', async (req, res) => {
   }
 })
 
-app.patch('/letters/:id', authenticateUser)
-app.patch('/letters/:id', async (req, res) => {
-  const { id } = req.params
-
+app.patch('/users/username'), async (req, res) => {
+  const { username, currentCity, artWorkId }
   try {
-    const updatedLetter = await Letter.findByIdAndUpdate(id, { letter: req.body.letter})
-    if (updatedLetters) {
-      res.json(updatedLetters)
-    } else {
-      res.status(404).json({ message: 'Kunde inte skicka'})
+    if (currentCity === "Karlstad") {
+      update= { }
     }
-  } catch (error) {
-    res.status(400).json({ message: 'Invalid request'})
+    const user = await User.findOneAndUpdate({ username, update })  
   }
-})
+}
+
 
 // Start the server
 app.listen(port, () => {
