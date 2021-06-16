@@ -94,6 +94,7 @@ const destinations = [
 ];
 
 const NavBar = () => {
+  
   return (
     <Container>
       {destinations.map((destination) => (
