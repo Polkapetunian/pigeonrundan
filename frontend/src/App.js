@@ -9,7 +9,7 @@ import Register from "./pages/Register";
 import Header from "./components/Header";
 import ProfilePage from "./pages/ProfilePage";
 import Cities from "./pages/Cities";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/Navbar";
 
 import user from "./reducers/user";
 import artwork from "./reducers/artwork";
