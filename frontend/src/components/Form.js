@@ -16,7 +16,7 @@ const Form = ({ username, setUsername, password, setPassword, mode, title, link,
 
   useEffect(() => {
     if (accessToken) {
-      history.push('/')
+      history.push('/cities')
     }
   }, [accessToken, history])
 
@@ -38,6 +38,7 @@ const Form = ({ username, setUsername, password, setPassword, mode, title, link,
             dispatch(user.actions.setUsername(data.username))
             dispatch(user.actions.setAccessToken(data.accessToken))
             dispatch(user.actions.setErrors(null))
+            console.log(data.username)
           })
           localStorage.setItem("user", JSON.stringify({
             username: data.username,
@@ -45,6 +46,7 @@ const Form = ({ username, setUsername, password, setPassword, mode, title, link,
           }))
         } else {
           dispatch(user.actions.setErrors(data))
+          console.log("error")
         }
       })
       .catch()

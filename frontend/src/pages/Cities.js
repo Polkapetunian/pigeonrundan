@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 import city from "../reducers/city";
@@ -32,6 +32,8 @@ align-self: flex-start;
 
 const Cities = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const accessToken = useSelector((store) => store.user.accessToken)
 
   const cities = [
     {
@@ -50,12 +52,12 @@ const Cities = () => {
     },
   ];
 
-  // useEffect(() => {
-  //   if (city !== null) {
-  //     history.push('/map')
-  //   }
-  // }, [city, history])
-
+  useEffect(() => {
+    if (!accessToken) {
+      history.push("/login");
+    }
+  })
+    
   return (
     <Container>
       <p>Välj stad!</p>

@@ -1,13 +1,24 @@
 import React, { useState } from 'react'
-
+import styled from 'styled-components'
 import Form from '../components/Form'
+
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 40px;
+`
 
 const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
   return (
-    <div className="path-container">
+    <Container>
       <Form
         username={username}
         setUsername={setUsername}
@@ -18,7 +29,7 @@ const Login = () => {
         link="/register"
         linkDescription="Not a user yet? Sign up here!"
       />
-    </div>
+    </Container>
   )
 }
 export default Login
