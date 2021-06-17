@@ -209,7 +209,7 @@ app.post('/users', async (req, res) => {
 
     res.json({
       success: true,
-      userID: newUser._id,
+      userId: newUser._id,
       username: newUser.username,
       accessToken: newUser.accessToken
     })
@@ -227,7 +227,7 @@ app.post('/sessions', async (req, res) => {
     if (user && bcrypt.compareSync(password, user.password)) {
       res.json({
         success: true,
-        userID: user._id,
+        userId: user._id,
         userName: user.username,
         accessToken: user.accessToken
       })
