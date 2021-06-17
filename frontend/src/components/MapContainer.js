@@ -60,7 +60,7 @@ const MapContainer = () => {
                   key={item.title}
                   position={item.location}
                   onClick={() =>
-                    dispatch(artwork.actions.setArtworkId(item.id))
+                    dispatch(artwork.actions.setArtworkId(item._id))
                   }
                 />
               );

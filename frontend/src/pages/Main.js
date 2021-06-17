@@ -7,7 +7,7 @@ import MapContainer from '../components/MapContainer'
 import SelectedArtwork from './SelectedArtwork'
 import ProfilePage from './ProfilePage'
 import Cities from './Cities'
-import NavBar from '../components/Navbar'
+import NavBar from '../components/NavBar'
 
 const Container = styled.div`
   width: 100%;

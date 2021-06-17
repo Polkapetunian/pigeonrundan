@@ -38,50 +38,36 @@ const userSchema = new mongoose.Schema({
   accessToken: {
     type: String,
     default: () => crypto.randomBytes(128).toString('hex')
-  },
-  doneArtWorksKarlstad: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "ArtWorkKarlstad"
-  }],
-  doneArtWorksUppsala: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "ArtWorkUppsala"
-  }]
+  }
 })
 
 const User = mongoose.model('User', userSchema)
 
-// doneArtWorksUppsala [
-//   {artworkId: 1,
-//   isDone: true},
-//   {artworkId: 2,
-//   isDone: false},
-//   {artworkId: 1,
-//   isDone: true},
-// ]
+const resolvedArtWorkUppsalaSchema = new mongoose.Schema({
+  artwork: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ArtWorkUppsala"
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }
+})
 
-// const artWorksForCity = (city) => {
-//   city="Karlstad"
-//   if (city = "Karlstad") {
-//     return "ArtWorkKarlstad"
-//   } else if (city = "Uppsala") {
-//     return "ArtWorkUppsala"
-//   }
-// }
+const resolvedArtWorkUppsala = mongoose.model('resolvedArtWorkUppsala', resolvedArtWorkUppsalaSchema)
 
-// const answerSchema = new mongoose.Schema({
-//   answer: {
-//     type: String,
-//     required: true,
-//     maxlength: 1
-//   },
-//   id: {
-//     type: Number,
-//     ref: artWorksForCity(city)
-//   },
-// })
+const resolvedArtWorkKarlstadSchema = new mongoose.Schema({
+  artwork: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ArtWorkKarlstad"
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }
+})
 
-// const Answer = mongoose.model('Answer', answerSchema)
+const resolvedArtWorkKarlstad = mongoose.model('resolvedArtWorkKarlstad', resolvedArtWorkKarlstadSchema)
 
 const artWorkSchema = new mongoose.Schema({
   id: {
@@ -108,22 +94,9 @@ const artWorkSchema = new mongoose.Schema({
   correctAnswer: {
     type: String,
     required: true
-  },
-  imgSrcMob: {
-    type: String,
-    required: true
-  },
-  imgSrcTabl: {
-    type: String,
-    required: true
-  },
-  imgSrcDesk: {
-    type: String,
-    required: true
   }
 })
 
-//artWorkSchema.index({ "location":"2dsphere" })
 
 const ArtWorkKarlstad = mongoose.model('ArtWorkKarlstad', artWorkSchema)
 const ArtWorkUppsala = mongoose.model('ArtWorkUppsala', artWorkSchema)
@@ -184,7 +157,7 @@ app.get('/artworks/Uppsala', async (req, res) => {
 
 app.get('/artworks/Karlstad/:id', async (req, res) => { 
 const {id} = req.params
-const selectedArtwork= await ArtWorkKarlstad.findOne({id: +id})
+const selectedArtwork= await ArtWorkKarlstad.findById(id)
   if (selectedArtwork) {
     res.json(selectedArtwork)
   } else {
@@ -192,12 +165,35 @@ const selectedArtwork= await ArtWorkKarlstad.findOne({id: +id})
   }
 })
 
-app.get('/artworks/Uppsala/:id', async (req, res) => { const {id} = req.params
-const selectedArtwork= await ArtWorkUppsala.findOne({id: +id})
+app.get('/artworks/Uppsala/:id', async (req, res) => {
+const {id} = req.params
+const selectedArtwork= await ArtWorkUppsala.findById(id)
   if (selectedArtwork) {
     res.json(selectedArtwork)
   } else {
     res.status(404).json({ error: 'Konstverket du söker finns inte i databasen.'})
+  }
+})
+
+app.post('/resolved-artworks/Karlstad', async (req, res) => {
+  const { artworkId, userId } = req.body
+  const resolvedArtwork = new resolvedArtWorkKarlstad({ artworkId, userId })
+  try {
+    const savedResolvedArtwork = await resolvedArtwork.save()
+    res.status(201).json(savedResolvedArtwork)
+  } catch (err) {
+    res.status(400).json({ message: 'Kunde inte spara det funna konstverket till databasen.', error: err.errors})
+  }
+})
+
+app.post('/resolved-artworks/Uppsala', async (req, res) => {
+  const { artworkId, userId } = req.body
+  const resolvedArtwork = new resolvedArtWorkUppsala({ artworkId, userId })
+  try {
+    const savedResolvedArtwork = await resolvedArtwork.save()
+    res.status(201).json(savedResolvedArtwork)
+  } catch (err) {
+    res.status(400).json({ message: 'Kunde inte spara det funna konstverket till databasen.', error: err.errors})
   }
 })
 
@@ -243,20 +239,6 @@ app.post('/sessions', async (req, res) => {
   }
 })
 
-// app.patch('/users/username', async (req, res) => {
-//   const { username, currentCity, artWorkId }
-//   try {
-//     if (currentCity === "Karlstad") {
-//       update= { }
-//     }
-//     const user = await User.findOneAndUpdate({ username, update })  
-//   } catch (error) {
-//   res.status(404).json({ success: false, message: 'Invalid request', error: error })
-//   }
-// })
-
-
-// Start the server
 app.listen(port, () => {
   // eslint-disable-next-line
   console.log(`Server running on http://localhost:${port}`)
