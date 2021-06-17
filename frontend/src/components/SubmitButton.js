@@ -16,11 +16,11 @@ font-weight: 700;
 margin:0 0 20px 20px;
 align-self: flex-start;
 `
-const SubmitButton = () => {
+const SubmitButton = ({setAnswerIsSubmitted}) => {
   const dispatch = useDispatch()
 
   return (
-    <Button type="submit" onClick={(event) => event.preventDefault} >
+    <Button type="submit" >
     Skicka
     </Button>
   )

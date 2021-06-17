@@ -50,6 +50,8 @@ const Input = styled.input`
 
 const SelectedArtworks = () => {
   const [newAnswer, setNewAnswer] = useState('')
+  const [answerIsCorrect, setAnswerIsCorrect] = useState(false)
+  const [answerIsSubmitted, setAnswerIsSubmitted] = useState(false)
   const artworkId = useSelector((store) => store.artwork.artworkId);
   const selectedArtwork = useSelector((store) => store.artwork.selectedArtwork);
   const userId = useSelector((store) => store.user.userId);
@@ -67,7 +69,9 @@ const SelectedArtworks = () => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
+    setAnswerIsSubmitted(true);
     if (newAnswer.toLowerCase() === selectedArtwork.correctAnswer.toLowerCase()) {
+      setAnswerIsCorrect(true)
       const options = {
         method: 'POST',
         headers: {
@@ -81,12 +85,14 @@ const SelectedArtworks = () => {
       .then(res => res.json())
       .then(data =>{
         if (data.success === true) {
-          console.log(data.artworkId, data.userId)
+          console.log(data.artworkId)
         } else {
           console.log("Det gick åt skogen")
         }
       } )
-    }
+    } else { 
+      console.log("Fel Svar!")
+      setAnswerIsCorrect(false)}
   }
 
   const onNewAnswerChange = (event) => {
@@ -126,6 +132,12 @@ const SelectedArtworks = () => {
           </label>
           <SubmitButton />
         </form>
+
+        {answerIsCorrect && 
+        <p>Rätt svar! Nu kan du ta nästa konstverk.</p>}
+        {!answerIsCorrect && answerIsSubmitted &&
+        <p>Fel!</p>}
+      
       </Container>
     )
   );
