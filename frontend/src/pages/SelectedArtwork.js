@@ -5,7 +5,7 @@ import styled from "styled-components/macro";
 import BackButton from "../components/BackButton";
 import SubmitButton from "../components/SubmitButton";
 
-import { ARTWORK_URL, USER_URL } from "../reusable/urls";
+import { ARTWORK_URL, ANSWER_URL } from "../reusable/urls";
 import artwork from "../reducers/artwork";
 
 const Container = styled.div`
@@ -52,6 +52,7 @@ const SelectedArtworks = () => {
   const [newAnswer, setNewAnswer] = useState('')
   const artworkId = useSelector((store) => store.artwork.artworkId);
   const selectedArtwork = useSelector((store) => store.artwork.selectedArtwork);
+  const userId = useSelector((store) => store.user.userId);
   const currentCity = useSelector((store) => store.city.currentCity.city);
   const accessToken = useSelector(store => store.user.accessToken)
 
@@ -76,10 +77,15 @@ const SelectedArtworks = () => {
         //We haven't prepared the endpoint cause we don't know what the schema should look like =(, so we don't know what to send
         body: JSON.stringify({ artworkId, userId })
       };
-
-      fetch(USER_URL("users"), options)
-        .then(response => response.json())
-        .then((data) => (data));
+      fetch(ANSWER_URL(currentCity), options)
+      .then(res => res.json())
+      .then(data =>{
+        if (data.success === true) {
+          console.log(data.artworkId, data.userId)
+        } else {
+          console.log("Det gick åt skogen")
+        }
+      } )
     }
   }
 

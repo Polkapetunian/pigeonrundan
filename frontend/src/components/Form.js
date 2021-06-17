@@ -37,7 +37,7 @@ const Form = ({ username, setUsername, password, setPassword, mode, title, link,
         if (data.success === true) {
           batch(() => {
             dispatch(user.actions.setUsername(data.username))
-            dispatch(userId.actions.setUserId(data.userId))
+            dispatch(user.actions.setUserId(data.userId))
             dispatch(user.actions.setAccessToken(data.accessToken))
             dispatch(user.actions.setErrors(null))
             console.log(data.username)

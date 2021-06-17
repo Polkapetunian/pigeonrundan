@@ -180,9 +180,9 @@ app.post('/resolved-artworks/Karlstad', async (req, res) => {
   const resolvedArtwork = new resolvedArtWorkKarlstad({ artworkId, userId })
   try {
     const savedResolvedArtwork = await resolvedArtwork.save()
-    res.status(201).json(savedResolvedArtwork)
+    res.status(201).json({success: true, savedResolvedArtwork})
   } catch (err) {
-    res.status(400).json({ message: 'Kunde inte spara det funna konstverket till databasen.', error: err.errors})
+    res.status(400).json({ success: false, message: 'Kunde inte spara det funna konstverket till databasen.', error: err.errors})
   }
 })
 
@@ -191,9 +191,9 @@ app.post('/resolved-artworks/Uppsala', async (req, res) => {
   const resolvedArtwork = new resolvedArtWorkUppsala({ artworkId, userId })
   try {
     const savedResolvedArtwork = await resolvedArtwork.save()
-    res.status(201).json(savedResolvedArtwork)
+    res.status(201).json({ success: true, savedResolvedArtwork})
   } catch (err) {
-    res.status(400).json({ message: 'Kunde inte spara det funna konstverket till databasen.', error: err.errors})
+    res.status(400).json({ success: false, message: 'Kunde inte spara det funna konstverket till databasen.', error: err.errors})
   }
 })
 
