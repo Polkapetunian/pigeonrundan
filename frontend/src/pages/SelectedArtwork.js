@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components/macro";
 
-import ResponsiveImage from "../components/ResponsiveImage";
 import BackButton from "../components/BackButton";
 import SubmitButton from "../components/SubmitButton";
 
 import { ARTWORK_URL, USER_URL } from "../reusable/urls";
 import artwork from "../reducers/artwork";
-import { InfoBox } from "@react-google-maps/api";
 
 const Container = styled.div`
   width: 100vw;
@@ -70,13 +68,13 @@ const SelectedArtworks = () => {
     event.preventDefault();
     if (newAnswer.toLowerCase() === selectedArtwork.correctAnswer.toLowerCase()) {
       const options = {
-        method: 'PATCH',
+        method: 'POST',
         headers: {
           Authorization: accessToken,
           'Content-Type': 'application/json'
         },
         //We haven't prepared the endpoint cause we don't know what the schema should look like =(, so we don't know what to send
-        body: JSON.stringify({ artworkId })
+        body: JSON.stringify({ artworkId, userId })
       };
 
       fetch(USER_URL("users"), options)
@@ -89,6 +87,8 @@ const SelectedArtworks = () => {
     setNewAnswer(event.target.value)
   }
 
+  console.log(newAnswer)
+
   return (
     selectedArtwork && (
       <Container>
@@ -100,8 +100,6 @@ const SelectedArtworks = () => {
           scrambled it to make a type specimen book. It has survived not only
           
         </Info>
-        {/* <ResponsiveImage imgSrcMob={selectedArtwork.imgSrcMob} imgSrcTabl={selectedArtwork.imgSrcTabl} imgSrcDesk={selectedArtwork.imgSrcDesk} /> */}
-        <Text>Konstverk nr {artworkId}</Text>
         <Header>{selectedArtwork.title}</Header>
         <ArtistContainer>
           <Text>Av {selectedArtwork.artist}, {selectedArtwork.year}</Text>
