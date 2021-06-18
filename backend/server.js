@@ -185,10 +185,20 @@ app.get('/resolved-artworks/Uppsala', async (req, res) => {
   res.json(resolvedArtworks)
 })
 
+app.get('/resolved-artworks/Karlstad/:id', async (req, res) => {
+  const {id} = req.params
+  try {
+  const resolvedArtWorksByUser = await resolvedArtWorkKarlstad.find({user: id}).populate({path: 'artwork', select: ['title', 'id']})
+  res.status(201).json({ success: true, resolvedArtWorksByUser })
+  } catch (err) {
+    res.status(400).json({ success: false, message: 'Kunde inte hitta användare', error: err})
+  }
+})
+
 app.get('/resolved-artworks/Uppsala/:id', async (req, res) => {
   const {id} = req.params
   try {
-  const resolvedArtWorksByUser = await resolvedArtWorkUppsala.find({user: id})
+  const resolvedArtWorksByUser = await resolvedArtWorkUppsala.find({user: id}).populate({path: 'artwork', select: ['title', 'id']})
   res.status(201).json({ success: true, resolvedArtWorksByUser })
   } catch (err) {
     res.status(400).json({ success: false, message: 'Kunde inte hitta användare', error: err})
