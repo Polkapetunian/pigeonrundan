@@ -187,7 +187,7 @@ app.get('/resolved-artworks/Uppsala', async (req, res) => {
 
 app.get('/resolved-artworks/Uppsala/:id', async (req, res) => {
   const {id} = req.params
-  const resolvedArtworksByUser = await resolvedArtworksUppsala.findOne({userId: +id})
+  const resolvedArtworksByUser = await resolvedArtworksUppsala.findOne({user: +id})
   res.json(resolvedArtworksByUser)
 })
 
