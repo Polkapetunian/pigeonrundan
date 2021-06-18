@@ -200,7 +200,7 @@ app.get('/resolved-artworks/Uppsala/:id', async (req, res) => {
 app.post('/resolved-artworks/Karlstad', async (req, res) => {
   const { artworkId, userId } = req.body
   try{
-    const existingArtwork = await resolvedArtWorkKarlstad.find({ artwork: artworkId, user: userId })
+    const existingArtwork = await resolvedArtWorkKarlstad.findOne({ artwork: artworkId, user: userId })
   if (existingArtwork) {
     res.status(201).json({ success: true, message: 'Du har redan sparat detta konstverk.', existingArtwork })
   } else {
