@@ -38,38 +38,22 @@ const userSchema = new mongoose.Schema({
   accessToken: {
     type: String,
     default: () => crypto.randomBytes(128).toString('hex')
-  }
+  },
+  resolvedArtWorkKarlstad: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ArtWorkKarlstad",
+    unique: true,
+    resolved: false
+  }],
+  resolvedArtWorkUppsala: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ArtWorkUppsala",
+    unique: true,
+    resolved: false
+  }]
 })
 
 const User = mongoose.model('User', userSchema)
-
-const resolvedArtWorkUppsalaSchema = new mongoose.Schema({
-  artwork: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "ArtWorkUppsala",
-    unique: true
-  },
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
-  }
-})
-
-const resolvedArtWorkUppsala = mongoose.model('resolvedArtWorkUppsala', resolvedArtWorkUppsalaSchema)
-
-const resolvedArtWorkKarlstadSchema = new mongoose.Schema({
-  artwork: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "ArtWorkKarlstad",
-    unique: true
-  },
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
-  }
-})
-
-const resolvedArtWorkKarlstad = mongoose.model('resolvedArtWorkKarlstad', resolvedArtWorkKarlstadSchema)
 
 const artWorkSchema = new mongoose.Schema({
   id: {
@@ -226,6 +210,22 @@ app.post('/resolved-artworks/Uppsala', async (req, res) => {
   }
   } catch (err) {
     res.status(400).json({ success: false, message: 'Kunde inte spara det funna konstverket till databasen.', error: err.errors })
+  }
+})
+
+app.post('/users/:id', async (req, res) => {
+  const { artworkId, userId, currentCity } = req.body
+  const {id} = req.params
+  try {
+    if (currentCity === 'Karlstad') {
+      const user= await User.findById(id).populate({path: 'resolvedArtWorkKarlstad', select: ['title', 'id']})
+    user.findOne(User._id === userId).then(doc => {
+      item = doc.items.id(userId)
+      item["resolved"] = "true"
+      doc.save()
+    })}
+  } catch (err) {
+    res.status(400).json({ success: false, message: 'Kunde inte markera konstverk som funnet'})
   }
 })
 
