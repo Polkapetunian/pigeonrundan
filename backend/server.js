@@ -185,6 +185,10 @@ app.get('/resolved-artworks/Uppsala', async (req, res) => {
   res.json(resolvedArtworks)
 })
 
+app.get('/resolved-artworks/Uppsala/:id', async (req, res) => {
+  const {id} = req.params
+  const resolvedArtworksByUser = await relovedArtworksUppsala.findOne({userId: +id})
+
 app.post('/resolved-artworks/Karlstad', async (req, res) => {
   const { artworkId, userId } = req.body
   const resolvedArtwork = new resolvedArtWorkKarlstad({ artwork: artworkId, user: userId })
