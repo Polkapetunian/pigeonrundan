@@ -5,7 +5,6 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import styled from "styled-components/macro";
 
 import artwork from "../reducers/artwork";
-import city from "../reducers/city";
 import { MAP_URL } from "../reusable/urls";
 
 const Container = styled.div`
@@ -41,6 +40,7 @@ const MapContainer = () => {
         .then((res) => res.json())
         .then((json) => setLocations(json));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log(locations);

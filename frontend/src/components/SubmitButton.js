@@ -1,5 +1,4 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import styled from "styled-components/macro"
 
 
@@ -17,7 +16,6 @@ margin:0 0 20px 20px;
 align-self: flex-start;
 `
 const SubmitButton = ({setAnswerIsSubmitted}) => {
-  const dispatch = useDispatch()
 
   return (
     <Button type="submit" >

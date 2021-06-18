@@ -73,6 +73,7 @@ const Form = ({ username, setUsername, password, setPassword, mode, title, link,
       .then(data => {
         if (data.success === true) {
           batch(() => {
+            //username is not saved to store
             dispatch(user.actions.setUsername(data.username))
             dispatch(user.actions.setUserId(data.userId))
             dispatch(user.actions.setAccessToken(data.accessToken))

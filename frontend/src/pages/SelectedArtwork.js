@@ -33,10 +33,6 @@ const TextClue = styled.p`
 const Info = styled.p`
   margin: 10px 30px;
 `;
-
-const Span = styled.span`
-  margin: 10px 0 0 0;
-`;
 const Header = styled.h2`
   font-weight: 700px;
   margin: 3px;
@@ -59,12 +55,14 @@ const SelectedArtworks = () => {
   const accessToken = useSelector(store => store.user.accessToken)
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     fetch(ARTWORK_URL(currentCity, artworkId))
       .then((res) => res.json())
       .then((data) => {
         dispatch(artwork.actions.setSelectedArtwork(data));
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onFormSubmit = (event) => {
