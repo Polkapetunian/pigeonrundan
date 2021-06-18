@@ -176,12 +176,12 @@ const selectedArtwork= await ArtWorkUppsala.findById(id)
 })
 
 app.get('/resolved-artworks/Karlstad', async (req, res) => {
-  const resolvedArtworks = await resolvedArtWorkKarlstad.populate().find()
+  const resolvedArtworks = await resolvedArtWorkKarlstad.find().populate()
   res.json(resolvedArtworks)
 })
 
 app.get('/resolved-artworks/Uppsala', async (req, res) => {
-  const resolvedArtworks = await resolvedArtWorkUppsala.populate().find()
+  const resolvedArtworks = await resolvedArtWorkUppsala.find().populate()
   res.json(resolvedArtworks)
 })
 
