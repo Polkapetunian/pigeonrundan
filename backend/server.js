@@ -202,7 +202,7 @@ app.post('/resolved-artworks/Karlstad', async (req, res) => {
   try{
     const existingArtwork = await resolvedArtWorkKarlstad.find({ artwork: artworkId, user: userId })
   if (existingArtwork) {
-    res.status(201).json({ success: true, message: 'Du har redan sparat detta konstverk.' })
+    res.status(201).json({ success: true, message: 'Du har redan sparat detta konstverk.', existingArtwork })
   } else {
     const resolvedArtwork = new resolvedArtWorkKarlstad({ artwork: artworkId, user: userId })
     const savedResolvedArtwork = await resolvedArtwork.save()
