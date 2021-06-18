@@ -188,8 +188,8 @@ app.get('/resolved-artworks/Uppsala', async (req, res) => {
 app.get('/resolved-artworks/Uppsala/:id', async (req, res) => {
   const {id} = req.params
   try {
-  const resolvedArtworksByUser = await resolvedArtworkUppsala.find({user: id})
-  res.status(201).json({ success: true, resolvedArtworksByUser })
+  const resolvedArtWorksByUser = await resolvedArtWorkUppsala.find({user: id})
+  res.status(201).json({ success: true, resolvedArtWorksByUser })
   } catch (err) {
     res.status(400).json({ success: false, message: 'Kunde inte hitta användare', error: err})
   }
