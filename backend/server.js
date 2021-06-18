@@ -187,7 +187,7 @@ app.get('/resolved-artworks/Uppsala', async (req, res) => {
 
 app.post('/resolved-artworks/Karlstad', async (req, res) => {
   const { artworkId, userId } = req.body
-  const resolvedArtwork = new resolvedArtWorkKarlstad({ artworkId, userId })
+  const resolvedArtwork = new resolvedArtWorkKarlstad({ artwork: artworkId, user: userId })
   try {
     const savedResolvedArtwork = await resolvedArtwork.save()
     res.status(201).json({success: true, savedResolvedArtwork})
@@ -198,7 +198,7 @@ app.post('/resolved-artworks/Karlstad', async (req, res) => {
 
 app.post('/resolved-artworks/Uppsala', async (req, res) => {
   const { artworkId, userId } = req.body
-  const resolvedArtwork = new resolvedArtWorkUppsala({ artworkId, userId })
+  const resolvedArtwork = new resolvedArtWorkUppsala({ artwork: artworkId, user: userId })
   try {
     const savedResolvedArtwork = await resolvedArtwork.save()
     res.status(201).json({ success: true, savedResolvedArtwork})
