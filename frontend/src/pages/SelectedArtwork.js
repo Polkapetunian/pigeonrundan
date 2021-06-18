@@ -90,6 +90,8 @@ const SelectedArtworks = () => {
           console.log("Det gick åt skogen")
         }
       } )
+      console.log(artworkId)
+      console.log(userId)
     } else { 
       console.log("Fel Svar!")
       setAnswerIsCorrect(false)}
