@@ -85,7 +85,7 @@ const SelectedArtworks = () => {
       .then(res => res.json())
       .then(data =>{
         if (data.success === true) {
-          console.log(data.artworkId)
+          console.log(data)
         } else {
           console.log("Det gick åt skogen")
         }
@@ -136,7 +136,7 @@ const SelectedArtworks = () => {
         {answerIsCorrect && 
         <p>Rätt svar! Nu kan du ta nästa konstverk.</p>}
         {!answerIsCorrect && answerIsSubmitted &&
-        <p>Fel!</p>}
+        <p>Fel! Försök igen!</p>}
       
       </Container>
     )
