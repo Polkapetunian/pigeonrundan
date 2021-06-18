@@ -46,7 +46,8 @@ const User = mongoose.model('User', userSchema)
 const resolvedArtWorkUppsalaSchema = new mongoose.Schema({
   artwork: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "ArtWorkUppsala"
+    ref: "ArtWorkUppsala",
+    unique: true
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -59,7 +60,8 @@ const resolvedArtWorkUppsala = mongoose.model('resolvedArtWorkUppsala', resolved
 const resolvedArtWorkKarlstadSchema = new mongoose.Schema({
   artwork: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "ArtWorkKarlstad"
+    ref: "ArtWorkKarlstad",
+    unique: true
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
