@@ -78,7 +78,7 @@ const Form = ({ username, setUsername, password, setPassword, mode, title, link,
             dispatch(user.actions.setUserId(data.userId))
             dispatch(user.actions.setAccessToken(data.accessToken))
             dispatch(user.actions.setErrors(null))
-            console.log(data.username)
+            console.log(data.userId)
           })
           localStorage.setItem("user", JSON.stringify({
             username: data.username,
@@ -103,7 +103,7 @@ const Form = ({ username, setUsername, password, setPassword, mode, title, link,
           id="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          />
+        />
         <label htmlFor="password">
           Password
         </label>
@@ -115,7 +115,7 @@ const Form = ({ username, setUsername, password, setPassword, mode, title, link,
         />
         {errors && <p>{errors.message}</p>}
         <Button type="submit" >{title}</Button>
-          <StyledLink to={link}>{linkDescription}</StyledLink>
+        <StyledLink to={link}>{linkDescription}</StyledLink>
       </form>
     </Container>
   )

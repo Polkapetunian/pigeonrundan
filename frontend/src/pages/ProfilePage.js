@@ -2,6 +2,8 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
+import { RESOLVED_URL } from '../reusable/urls'
+
 const Container = styled.div`
   height: 100vh;
   display: flex;
@@ -15,13 +17,13 @@ const Container = styled.div`
 
 const ProfilePage = () => {
   const username = useSelector((store) => store.user.username)
-return(
-  <Container>
-    <p>Välkommen {username}!</p>
-    <p>Profilsida</p>
-  </Container>
-)  
-  
+  return (
+    <Container>
+      <p>Välkommen {username}!</p>
+      <p>Profilsida</p>
+    </Container>
+  )
+
 }
 
 export default ProfilePage
