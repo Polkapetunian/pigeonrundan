@@ -175,6 +175,16 @@ const selectedArtwork= await ArtWorkUppsala.findById(id)
   }
 })
 
+app.get('/resolved-artworks/Karlstad', async (req, res) => {
+  const resolvedArtworks = await resolvedArtWorkKarlstad.find()
+  res.json(resolvedArtworks)
+})
+
+app.get('/resolved-artworks/Uppsala', async (req, res) => {
+  const resolvedArtworks = await resolvedArtWorkUppsala.find()
+  res.json(resolvedArtworks)
+})
+
 app.post('/resolved-artworks/Karlstad', async (req, res) => {
   const { artworkId, userId } = req.body
   const resolvedArtwork = new resolvedArtWorkKarlstad({ artworkId, userId })
