@@ -215,12 +215,17 @@ app.post('/resolved-artworks/Karlstad', async (req, res) => {
 
 app.post('/resolved-artworks/Uppsala', async (req, res) => {
   const { artworkId, userId } = req.body
-  const resolvedArtwork = new resolvedArtWorkUppsala({ artwork: artworkId, user: userId })
-  try {
+  try{
+    const existingArtwork = await resolvedArtWorkUppsala.findOne({ artwork: artworkId, user: userId })
+  if (existingArtwork) {
+    res.status(201).json({ success: true, message: 'Du har redan sparat detta konstverk.', existingArtwork })
+  } else {
+    const resolvedArtwork = new resolvedArtWorkUppsala({ artwork: artworkId, user: userId })
     const savedResolvedArtwork = await resolvedArtwork.save()
-    res.status(201).json({ success: true, savedResolvedArtwork})
+    res.status(201).json({ success: true, savedResolvedArtwork })
+  }
   } catch (err) {
-    res.status(400).json({ success: false, message: 'Kunde inte spara det funna konstverket till databasen.', error: err.errors})
+    res.status(400).json({ success: false, message: 'Kunde inte spara det funna konstverket till databasen.', error: err.errors })
   }
 })
 
