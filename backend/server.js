@@ -191,7 +191,7 @@ app.get('/resolved-artworks/Uppsala/:id', async (req, res) => {
   const resolvedArtworksByUser = await resolvedArtworksUppsala.find({user: id})
   res.status(201).json({ success: true, resolvedArtworksByUser })
   } catch (err) {
-    res.status(400).json({ success: false, message: 'Kunde inte hitta användare'})
+    res.status(400).json({ success: false, message: 'Kunde inte hitta användare', error: err})
   }
 })
 
