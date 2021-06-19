@@ -28,7 +28,7 @@ const Register = () => {
         mode="users"
         title="Register"
         link="/login"
-        linkDescription="Already signed up? Log in here!"
+        linkDescription="Har du redan ett användarkonto? Logga in här!"
       />
     </Container>
   )

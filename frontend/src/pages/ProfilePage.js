@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { RESOLVED_URL } from '../reusable/urls'
@@ -19,13 +20,27 @@ const Container = styled.div`
 
 const ListContainer = styled.div`
   background-color: #f1dbb3;
+  padding: 20px;
 `
+const WelcomeText = styled.p`
+  color: #f1dbb3;
+  font-size: 24px;
+`
+
 
 const ProfilePage = () => {
   const username = useSelector((store) => store.user.username)
+  const accessToken = useSelector((store) => store.user.accessToken)
   const userId = useSelector((store) => store.user.userId)
   const resolvedKarlstad = useSelector((store) => store.user.resolvedKarlstad)
   const dispatch = useDispatch()
+  const history = useHistory()
+
+  useEffect(() => {
+    if (!accessToken) {
+      history.push("/login");
+    }
+  })
 
   useEffect(() => {
     if (userId) {
@@ -65,7 +80,7 @@ const ProfilePage = () => {
 
   return (
     <Container>
-      <p>Välkommen {username}!</p>
+      <WelcomeText>Välkommen {username}!</WelcomeText>
       <ListContainer>
         <h2>Karlstad</h2>
         {resolvedKarlstad.map((item) => {

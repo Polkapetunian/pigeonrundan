@@ -27,7 +27,7 @@ const Login = () => {
         mode="sessions"
         title="Login"
         link="/register"
-        linkDescription="Not a user yet? Sign up here!"
+        linkDescription="Har du inget användarkonto än? Skapa ett här!"
       />
     </Container>
   )

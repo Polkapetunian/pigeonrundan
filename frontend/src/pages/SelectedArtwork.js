@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom'
 import styled from "styled-components/macro";
 
 import BackButton from "../components/BackButton";
@@ -19,23 +20,30 @@ const Container = styled.div`
   margin: 0;
   font-family: 'Lora', serif;
 `;
+
+const InnerContainer = styled.div`
+  background-color: #f1dbb3;
+  margin: 20px;
+  padding: 20px;
+`
+
 const ArtistContainer = styled.div`
   display: flex;
   flex-direction: row;
 `;
 
 const Text = styled.p`
-  margin: 10px 0 0 0;
+  font-weight: 700;
+  margin: 0;
 `;
 const TextClue = styled.p`
-  margin: 10px 30px;
+ font-style: italic; 
 `;
 const Info = styled.p`
-  margin: 10px 30px;
+  
 `;
 const Header = styled.h2`
   font-weight: 700px;
-  margin: 3px;
 `;
 const Input = styled.input`
   width: 40px;
@@ -43,6 +51,10 @@ const Input = styled.input`
   background-color: #f1dbb3;
   border: 1px solid #4b3d2d;
 `;
+
+const Span = styled.span`
+  font-weight: 700;
+`
 
 const SelectedArtworks = () => {
   const [newAnswer, setNewAnswer] = useState('')
@@ -55,6 +67,13 @@ const SelectedArtworks = () => {
   const accessToken = useSelector(store => store.user.accessToken)
 
   const dispatch = useDispatch();
+  const history = useHistory()
+
+  useEffect(() => {
+    if (!accessToken) {
+      history.push("/login");
+    }
+  })
 
   useEffect(() => {
     fetch(ARTWORK_URL(currentCity, artworkId))
@@ -105,39 +124,39 @@ const SelectedArtworks = () => {
     selectedArtwork && (
       <Container>
         <BackButton />
-        <Info>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          
-        </Info>
-        <Header>{selectedArtwork.title}</Header>
-        <ArtistContainer>
-          <Text>Av {selectedArtwork.artist}, {selectedArtwork.year}</Text>
-        </ArtistContainer>
-        <TextClue>{selectedArtwork.clue}</TextClue>
-        <form 
-        onSubmit={onFormSubmit}
-        >
-          <label>
-            {" "}
-            Bokstav:
-            <Input 
-            type="text"
-            value={newAnswer}
-            onChange={onNewAnswerChange}
-            maxLength = "1"
-             />
-          </label>
-          <SubmitButton />
-        </form>
+        <InnerContainer>
+          <Header>{selectedArtwork.title}</Header>
+          <ArtistContainer>
+            <Text>Av {selectedArtwork.artist}, {selectedArtwork.year}</Text>
+          </ArtistContainer>
+          <Info>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text ever
+            since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only
+          </Info>
+          <TextClue><Span>Ledtråd:</Span> {selectedArtwork.clue}</TextClue>
+          <form 
+          onSubmit={onFormSubmit}
+          >
+            <label>
+              {" "}
+              Bokstav:
+              <Input 
+              type="text"
+              value={newAnswer}
+              onChange={onNewAnswerChange}
+              maxLength = "1"
+              />
+            </label>
+            <SubmitButton />
+          </form>
 
-        {answerIsCorrect && 
-        <p>Rätt svar! Nu kan du ta nästa konstverk.</p>}
-        {!answerIsCorrect && answerIsSubmitted &&
-        <p>Fel! Försök igen!</p>}
-      
+          {answerIsCorrect && 
+          <p>Rätt svar! Nu kan du ta nästa konstverk.</p>}
+          {!answerIsCorrect && answerIsSubmitted &&
+          <p>Fel! Försök igen!</p>}
+      </InnerContainer>
       </Container>
     )
   );

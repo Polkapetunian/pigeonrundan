@@ -84,7 +84,8 @@ const Form = ({ username, setUsername, password, setPassword, mode, title, link,
           })
           localStorage.setItem("user", JSON.stringify({
             username: data.username,
-            accessToken: data.accessToken
+            accessToken: data.accessToken,
+            userId: data.userId
           }))
         } else {
           dispatch(user.actions.setErrors(data))
@@ -98,7 +99,7 @@ const Form = ({ username, setUsername, password, setPassword, mode, title, link,
     <Container>
       <form className="registration-form" onSubmit={onFormSubmit}>
         <label htmlFor="username">
-          Username
+          Användarnamn:
         </label>
         <Input
           type="text"
@@ -107,7 +108,7 @@ const Form = ({ username, setUsername, password, setPassword, mode, title, link,
           onChange={(e) => setUsername(e.target.value)}
         />
         <label htmlFor="password">
-          Password
+          Lösenord:
         </label>
         <Input
           type="password"
