@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import styled from "styled-components/macro";
+
+import { Map, Marker } from "pigeon-maps";
 
 import artwork from "../reducers/artwork";
 import { MAP_URL } from "../reusable/urls";
@@ -26,11 +27,6 @@ const MapContainer = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const mapStyles = {
-    height: "75vh",
-    width: "90%",
-  };
-
   useEffect(() => {
     if (!currentCity) {
       history.push("/cities");
@@ -43,30 +39,64 @@ const MapContainer = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(locations);
+  const markerColor = "brown"
+
+  const testLocations =
+
+    [
+      {
+        "_id": "60c5edf6a3267815f8efa57f",
+        "id": 1,
+        "title": "Vargen",
+        "artist": "Lennart Sand",
+        "year": 1999,
+        "location": [59.369761, 13.4867216],
+        "clue": "Vilken är den fjärde bokstaven i översta raden på skylten till denna skulptur?",
+        "correctAnswer": "G",
+        "__v": 0
+      },
+      {
+        "_id": "60c5edf6a3267815f8efa580",
+        "id": 2,
+        "title": "Dimman",
+        "artist": "Gusten Lindberg",
+        "year": 1937,
+        "location": [59.3766395, 13.4929866],
+        "clue": "Vilken är den andra bokstaven i den andra raden på skylten till denna skulptur?",
+        "correctAnswer": "U",
+        "__v": 0
+      },
+      {
+        "_id": "60c5edf6a3267815f8efa581",
+        "id": 3,
+        "title": "Flottaren",
+        "artist": "Solveig Nyqvist",
+        "year": 2001,
+        "location": [59.3814502, 13.4872158],
+        "clue": "Vilken är den första bokstaven på skyltens tredje rad?",
+        "correctAnswer": "I",
+        "__v": 0
+      }]
+
 
   return (
     currentCity && (
       <Container>
-        <LoadScript googleMapsApiKey={process.env.REACT_APP_API_KEY}>
-          <GoogleMap
-            mapContainerStyle={mapStyles}
-            zoom={12}
-            center={currentCity.center}
-          >
-            {locations.map((item) => {
-              return (
-                <Marker
-                  key={item.title}
-                  position={item.location}
-                  onClick={() =>
-                    dispatch(artwork.actions.setArtworkId(item._id))
-                  }
-                />
-              );
-            })}
-          </GoogleMap>
-        </LoadScript>
+        <Map height={500} width={300} defaultCenter={currentCity.center} defaultZoom={currentCity.zoom}>
+          {testLocations.map((item) => {
+            return (
+              <Marker
+                key={item.title}
+                width={50}
+                anchor={item.location}
+                color={markerColor}
+                onClick={() =>
+                  dispatch(artwork.actions.setArtworkId(item._id))
+                }
+              />
+            )
+          })}
+        </Map>
       </Container>
     )
   );

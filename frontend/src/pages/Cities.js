@@ -39,17 +39,13 @@ const Cities = () => {
   const cities = [
     {
       city: "Karlstad",
-      center: {
-        lat: 59.40218,
-        lng: 13.511498,
-      },
+      center: [59.3855, 13.5000],
+      zoom: 13
     },
     {
       city: "Uppsala",
-      center: {
-        lat: 59.858562,
-        lng: 17.638928,
-      },
+      center: [59.858562, 17.638928],
+      zoom: 11
     },
   ];
 
@@ -58,7 +54,7 @@ const Cities = () => {
       history.push("/login");
     }
   })
-    
+
   return (
     <Container>
       <p>Välj stad!</p>
