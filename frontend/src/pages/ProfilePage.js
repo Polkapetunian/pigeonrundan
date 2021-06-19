@@ -19,9 +19,21 @@ const Container = styled.div`
 `;
 
 const ListContainer = styled.div`
-  background-color: #f1dbb3;
   padding: 20px;
+  width: 120px;
+  font-family: "Arial";
+  font-style: normal;
+  font-size: 16px;
 `
+const ResolvedContainer = styled.div`
+  background-color: #f1dbb3;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 20px;
+`
+
 const WelcomeText = styled.p`
   color: #f1dbb3;
   font-size: 24px;
@@ -33,6 +45,7 @@ const ProfilePage = () => {
   const accessToken = useSelector((store) => store.user.accessToken)
   const userId = useSelector((store) => store.user.userId)
   const resolvedKarlstad = useSelector((store) => store.user.resolvedKarlstad)
+  const resolvedUppsala = useSelector((store) => store.user.resolvedUppsala)
   const dispatch = useDispatch()
   const history = useHistory()
 
@@ -83,16 +96,28 @@ const ProfilePage = () => {
   return (
     <Container>
       <WelcomeText>Välkommen {username}!</WelcomeText>
-      <ListContainer>
-        <h2>Karlstad</h2>
-        {resolvedKarlstad.map((item) => {
-          return (
-            <>
-              <p>{item.artwork.id}{item.artwork.title}</p>
-            </>
-          )
-        })}
-      </ListContainer>
+      <ResolvedContainer>
+        <ListContainer>
+          <h2>Karlstad</h2>
+          {resolvedKarlstad.map((item) => {
+            return (
+              <>
+                <p>{item.artwork.id}.{" "}{item.artwork.title}</p>
+              </>
+            )
+          })}
+        </ListContainer>
+        <ListContainer>
+          <h2>Uppsala</h2>
+          {resolvedUppsala.map((item) => {
+            return (
+              <>
+                <p>{item.artwork.id}.{" "}{item.artwork.title}</p>
+              </>
+            )
+          })}
+        </ListContainer>
+      </ResolvedContainer>
     </Container>
   )
 }
