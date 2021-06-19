@@ -26,14 +26,32 @@ const ProfilePage = () => {
   useEffect(() => {
     if (userId) {
       console.log(userId)
-      const currentCity = "Karlstad"
-      fetch(RESOLVED_URL(currentCity, userId))
+      const currentCity1 = "Karlstad"
+      fetch(RESOLVED_URL(currentCity1, userId))
         .then((res) => res.json())
         .then((data) => {
           if (data.success === true) {
             console.log(data.resolvedArtWorksByUser[0].artwork)
             //kan vi mappa och få ut bara array mede artwork?
             dispatch(user.actions.setResolvedKarlstad(data.resolvedArtWorksByUser))
+          } else {
+            console.log("Den gubben gick inte!")
+          }
+        })
+    }
+  }, [])
+
+  useEffect(() => {
+    if (userId) {
+      console.log(userId)
+      const currentCity2 = "Uppsala"
+      fetch(RESOLVED_URL(currentCity2, userId))
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success === true) {
+            console.log(data.resolvedArtWorksByUser[0].artwork)
+            //kan vi mappa och få ut bara array mede artwork?
+            dispatch(user.actions.setResolvedUppsala(data.resolvedArtWorksByUser))
           } else {
             console.log("Den gubben gick inte!")
           }

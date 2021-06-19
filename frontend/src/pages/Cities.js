@@ -70,16 +70,6 @@ const Cities = () => {
           </Button>
         </Link>
       ))}
-      {/* <Link to="/map">
-      <button onClick={() => dispatch(city.actions.setCurrentCity("Karlstad"))}>
-        Karlstad
-      </button>
-      </Link>
-      <Link to="/map">
-      <button onClick={() => dispatch(city.actions.setCurrentCity(city2))}>
-        Uppsala
-      </button>
-      </Link> */}
     </Container>
   );
 };
