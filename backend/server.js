@@ -148,40 +148,32 @@ app.get('/', (req, res) => {
 
 //Should we add authenticateUser to this?
 app.get('/artworks/Karlstad', async (req, res) => {
-  try {
-    const artWorks = await ArtWorkKarlstad.find()
-    res.status(201).json({ success: true, artWorks})
-  } catch (err) {
-    res.status(400).json({ success: false, message: 'Kunde inte hitta användare', error: err })
-  }
+  const artWorks = await ArtWorkKarlstad.find()
+  res.json(artWorks)
 })
 
 app.get('/artworks/Uppsala', async (req, res) => {
-  try {
-    const artWorks = await ArtWorkUppsala.find()
-  res.status(201).json({ success: true, artWorks})
-  } catch (err) {
-  res.status(400).json({ success: false, message: 'Kunde inte hitta användare', error: err })
-}
+  const artWorks = await ArtWorkUppsala.find()
+  res.json(artWorks)
 })
 
 app.get('/artworks/Karlstad/:id', async (req, res) => {
   const { id } = req.params
-  try {
-    const selectedArtwork = await ArtWorkKarlstad.findById(id)
-    res.status(201).json({ success: true, selectedArtwork})
-  } catch {
-    res.status(404).json({ success: false, error: 'Konstverket du söker finns inte i databasen.' })
+  const selectedArtwork = await ArtWorkKarlstad.findById(id)
+  if (selectedArtwork) {
+    res.json(selectedArtwork)
+  } else {
+    res.status(404).json({ error: 'Konstverket du söker finns inte i databasen.' })
   }
 })
 
 app.get('/artworks/Uppsala/:id', async (req, res) => {
   const { id } = req.params
-  try {
-    const selectedArtwork = await ArtWorkUppsala.findById(id)
-    res.status(201).json({ success: true, selectedArtwork })
-  } catch (err) {
-    res.status(400).json({ success: false, message: 'Konstverket du söker finns inte i databasen.', error: err.errors })
+  const selectedArtwork = await ArtWorkUppsala.findById(id)
+  if (selectedArtwork) {
+    res.json(selectedArtwork)
+  } else {
+    res.status(404).json({ error: 'Konstverket du söker finns inte i databasen.' })
   }
 })
 
