@@ -35,8 +35,7 @@ const MapContainer = () => {
   useEffect(() => {
     if (!currentCity) {
       history.push("/cities");
-    }
-    if (currentCity) {
+    } else if (currentCity){
       fetch(MAP_URL(currentCity.city))
         .then((res) => res.json())
         .then((data) => {
