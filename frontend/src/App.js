@@ -28,7 +28,7 @@ export const App = () => {
       <BrowserRouter>
         <Provider store={store}>
           <Header />
-          <NavBar />
+          <NavBar/>
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />

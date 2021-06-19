@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
 
 import DestinationLink from "./DestinationLink";
@@ -94,8 +95,10 @@ const destinations = [
 ];
 
 const NavBar = () => {
-  
+  const accessToken = useSelector((store) => store.user.accessToken)
+
   return (
+    accessToken &&
     <Container>
       {destinations.map((destination) => (
         <DestinationLink
