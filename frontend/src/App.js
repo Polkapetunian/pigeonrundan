@@ -11,6 +11,7 @@ import ProfilePage from "./pages/ProfilePage";
 import Cities from "./pages/Cities";
 import NavBar from "./components/NavBar";
 
+import allArtworks from "./reducers/allArtworks"
 import user from "./reducers/user";
 import artwork from "./reducers/artwork";
 import city from "./reducers/city";
@@ -19,6 +20,7 @@ const reducer = combineReducers({
   user: user.reducer,
   artwork: artwork.reducer,
   city: city.reducer,
+  allArtworks: allArtworks.reducer
 });
 const store = configureStore({ reducer });
 

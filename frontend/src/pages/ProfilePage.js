@@ -24,6 +24,7 @@ const ListContainer = styled.div`
   font-family: "Arial";
   font-style: normal;
   font-size: 16px;
+  display: grid;
 `
 const ResolvedContainer = styled.div`
   background-color: #f1dbb3;
@@ -99,23 +100,23 @@ const ProfilePage = () => {
       <ResolvedContainer>
         <ListContainer>
           <h2>Karlstad</h2>
-          {resolvedKarlstad.map((item) => {
+          {/* {resolvedKarlstad.map((item) => {
             return (
               <>
                 <p>{item.artwork.id}.{" "}{item.artwork.title}</p>
               </>
             )
-          })}
+          })} */}
         </ListContainer>
         <ListContainer>
           <h2>Uppsala</h2>
-          {resolvedUppsala.map((item) => {
+          {/* {resolvedUppsala.map((item) => {
             return (
               <>
                 <p>{item.artwork.id}.{" "}{item.artwork.title}</p>
               </>
             )
-          })}
+          })} */}
         </ListContainer>
       </ResolvedContainer>
     </Container>

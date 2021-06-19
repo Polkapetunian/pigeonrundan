@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, batch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import styled from "styled-components/macro";
 
 import artwork from "../reducers/artwork";
+import allArtworks from "../reducers/allArtworks";
 import { MAP_URL } from "../reusable/urls";
 
 const Container = styled.div`
@@ -38,12 +39,24 @@ const MapContainer = () => {
     if (currentCity) {
       fetch(MAP_URL(currentCity.city))
         .then((res) => res.json())
-        .then((json) => setLocations(json));
+        .then((data) => {
+          if (data.success === true) {
+            console.log(data._id)
+            batch(() => {
+              //kan vi mappa och få ut bara array mede artwork?
+            dispatch(allArtworks.actions.setMongoId(data._id))
+            dispatch(allArtworks.actions.setArtworkId(data.id))
+            dispatch(allArtworks.actions.setTitle(data.title))
+            dispatch(allArtworks.actions.setLocation(data.location))
+            })
+            
+          } else {
+            console.log("Den gubben gick inte!")
+          }
+        })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  console.log(locations);
+  }, [])
 
   return (
     currentCity && (
