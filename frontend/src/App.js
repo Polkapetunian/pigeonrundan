@@ -30,7 +30,7 @@ export const App = () => {
           <Header />
           <NavBar/>
           <Switch>
-            <Route path="/login" component={Login} />
+            <Route path="/" component={Login} />
             <Route path="/register" component={Register} />
             <Route exact path="/map" component={Main} />
             <Route path="/min-sida" component={ProfilePage} />

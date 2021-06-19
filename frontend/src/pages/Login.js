@@ -25,7 +25,7 @@ const Login = () => {
         password={password}
         setPassword={setPassword}
         mode="sessions"
-        title="Login"
+        title="Logga in"
         link="/register"
         linkDescription="Har du inget användarkonto än? Skapa ett här!"
       />

@@ -55,7 +55,7 @@ const Cities = () => {
 
   useEffect(() => {
     if (!accessToken) {
-      history.push("/login");
+      history.push("/");
     }
   })
     

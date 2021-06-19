@@ -71,7 +71,7 @@ const SelectedArtworks = () => {
 
   useEffect(() => {
     if (!accessToken) {
-      history.push("/login");
+      history.push("/");
     }
   })
 
