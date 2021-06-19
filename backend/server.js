@@ -150,7 +150,7 @@ app.get('/', (req, res) => {
 app.get('/artworks/Karlstad', async (req, res) => {
   try {
     const artWorks = await ArtWorkKarlstad.find()
-    res.status(201).res.json({ success: true, artWorks})
+    res.status(201).json({ success: true, artWorks})
   } catch (err) {
     res.status(400).json({ success: false, message: 'Kunde inte hitta användare', error: err })
   }
@@ -159,7 +159,7 @@ app.get('/artworks/Karlstad', async (req, res) => {
 app.get('/artworks/Uppsala', async (req, res) => {
   try {
     const artWorks = await ArtWorkUppsala.find()
-  res.status(201).res.json({ success: true, artWorks})
+  res.status(201).json({ success: true, artWorks})
   } catch (err) {
   res.status(400).json({ success: false, message: 'Kunde inte hitta användare', error: err })
 }
@@ -169,7 +169,7 @@ app.get('/artworks/Karlstad/:id', async (req, res) => {
   const { id } = req.params
   try {
     const selectedArtwork = await ArtWorkKarlstad.findById(id)
-    res.status(201).res.json({ success: true, selectedArtwork})
+    res.status(201).json({ success: true, selectedArtwork})
   } catch {
     res.status(404).json({ success: false, error: 'Konstverket du söker finns inte i databasen.' })
   }
@@ -179,7 +179,7 @@ app.get('/artworks/Uppsala/:id', async (req, res) => {
   const { id } = req.params
   try {
     const selectedArtwork = await ArtWorkUppsala.findById(id)
-    res.json(201).json({ success: true, selectedArtwork })
+    res.status(201).json({ success: true, selectedArtwork })
   } catch (err) {
     res.status(400).json({ success: false, message: 'Konstverket du söker finns inte i databasen.', error: err.errors })
   }
