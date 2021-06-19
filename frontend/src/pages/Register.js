@@ -27,7 +27,7 @@ const Register = () => {
         setPassword={setPassword}
         mode="users"
         title="Register"
-        link="/login"
+        link="/"
         linkDescription="Har du redan ett användarkonto? Logga in här!"
       />
     </Container>

@@ -38,7 +38,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     if (!accessToken) {
-      history.push("/");
+      history.push("/login");
     }
   })
 

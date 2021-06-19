@@ -55,7 +55,7 @@ const Cities = () => {
 
   useEffect(() => {
     if (!accessToken) {
-      history.push("/");
+      history.push("/login");
     }
   })
     
@@ -64,7 +64,7 @@ const Cities = () => {
       <p>Välj stad!</p>
 
       {cities.map((singleCity) => (
-        <Link to="/map" key={singleCity.city}>
+        <Link exact to="/" key={singleCity.city}>
           <Button
             onClick={() => dispatch(city.actions.setCurrentCity(singleCity))}>
             {singleCity.city}

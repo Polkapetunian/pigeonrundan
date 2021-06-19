@@ -23,7 +23,7 @@ const Main = () => {
 
   useEffect(() => {
     if (!accessToken) {
-      history.push("/");
+      history.push("/login");
     }
   })
 
@@ -33,7 +33,7 @@ const Main = () => {
       <Container>
         <NavBar />
           <Switch>
-            <Route path="/map">
+            <Route exact path="/">
             {artworkId && <SelectedArtwork/>}
             {!artworkId && <MapContainer/>} 
             </Route>
