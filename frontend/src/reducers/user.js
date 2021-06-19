@@ -6,7 +6,9 @@ const user = createSlice({
     username: null,
     userId: null,
     accessToken: null,
-    errors: null
+    errors: null,
+    resolvedKarlstad: [],
+    resolvedUppsala: []
   },
   reducers: {
     setUsername: (store, action) => {
@@ -20,6 +22,12 @@ const user = createSlice({
     },
     setErrors: (store, action) => {
       store.errors = action.payload
+    },
+    setResolvedKarlstad: (store, action) => {
+      store.resolvedKarlstad = action.payload
+    },
+    setResolvedUppsala: (store, action) => {
+      store.resolvedUppsala = action.payload
     }
   }
 })
