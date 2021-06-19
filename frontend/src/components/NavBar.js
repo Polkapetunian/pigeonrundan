@@ -2,7 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
 
-import DestinationLink from "./DestinationLink";
+import MapLink from "./MapLink";
+import ChangeCityLink from "./ChangeCityLink";
+import ProfilepageLink from "./ProfilepageLink";
+import LogoutLink from "./LogoutLink";
 
 const Container = styled.nav`
   width: 100%;
@@ -100,14 +103,10 @@ const NavBar = () => {
   return (
     accessToken &&
     <Container>
-      {destinations.map((destination) => (
-        <DestinationLink
-          key={destination.title}
-          title={destination.title}
-          iconSrc={destination.iconSrc}
-          slug={destination.slug}
-        />
-      ))}
+      <MapLink/>
+      <ChangeCityLink/>
+      <ProfilepageLink/>
+      <LogoutLink/>
     </Container>
   );
 };
