@@ -17,6 +17,10 @@ const Container = styled.div`
   font-size: 16px;
 `;
 
+const ListContainer = styled.div`
+  background-color: #f1dbb3;
+`
+
 const ProfilePage = () => {
   const username = useSelector((store) => store.user.username)
   const userId = useSelector((store) => store.user.userId)
@@ -62,14 +66,16 @@ const ProfilePage = () => {
   return (
     <Container>
       <p>Välkommen {username}!</p>
-      <h2>Karlstad</h2>
-      {resolvedKarlstad.map((item) => {
-        return (
-          <>
-            <p>{item.artwork.id}{item.artwork.title}</p>
-          </>
-        )
-      })}
+      <ListContainer>
+        <h2>Karlstad</h2>
+        {resolvedKarlstad.map((item) => {
+          return (
+            <>
+              <p>{item.artwork.id}{item.artwork.title}</p>
+            </>
+          )
+        })}
+      </ListContainer>
     </Container>
   )
 }

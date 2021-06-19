@@ -5,6 +5,7 @@ const Container = styled.nav`
   width: 100%;
   position: fixed;
   justify-items: center;
+  color: #463727;
   background-color: #f1dbb3;
   box-sizing: border-box;
   font-family: 'Viaoda Libre', cursive;

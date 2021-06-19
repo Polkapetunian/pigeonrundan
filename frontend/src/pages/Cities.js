@@ -10,6 +10,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: #f1dbb3;
   align-items: center;
   font-family: 'Lora', serif;
   font-style: italic;

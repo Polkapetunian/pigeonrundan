@@ -15,6 +15,7 @@ const Container = styled.div`
   align-items: center;
   font-size: 30px;
   margin: 20px;
+  color: #f1dbb3
 `
 
 const Button = styled.button`
@@ -33,12 +34,13 @@ margin:5px;
 
 const Input = styled.input`
   font-size: 14px;
+  background-color: #f1dbb3;
   margin: 10px;
   padding: 4px;
 `
 
 const StyledLink = styled(Link)`
-  color: black;
+  color: #f1dbb3;
   text-decoration: none;
   font-size: 16px;
 `
