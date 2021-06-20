@@ -38,38 +38,20 @@ const userSchema = new mongoose.Schema({
   accessToken: {
     type: String,
     default: () => crypto.randomBytes(128).toString('hex')
-  }
-})
-
-const User = mongoose.model('User', userSchema)
-
-const resolvedArtWorkUppsalaSchema = new mongoose.Schema({
-  artwork: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "ArtWorkUppsala",
-    unique: true
   },
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
-  }
-})
-
-const resolvedArtWorkUppsala = mongoose.model('resolvedArtWorkUppsala', resolvedArtWorkUppsalaSchema)
-
-const resolvedArtWorkKarlstadSchema = new mongoose.Schema({
-  artwork: {
+  resolvedKarlstad: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "ArtWorkKarlstad",
     unique: true
   },
-  user: {
+  resolvedUppsala: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
+    ref: "ArtWorkUppsala",
+    unique: true
   }
 })
 
-const resolvedArtWorkKarlstad = mongoose.model('resolvedArtWorkKarlstad', resolvedArtWorkKarlstadSchema)
+const User = mongoose.model('User', userSchema)
 
 const artWorkSchema = new mongoose.Schema({
   id: {
@@ -88,13 +70,24 @@ const artWorkSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  location: { type: Object },
+  location: {
+    type: [],
+    required: true
+  },
   clue: {
     type: String,
     required: true
   },
   correctAnswer: {
     type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  isResolved: {
+    type: Boolean,
     required: true
   }
 })
@@ -177,55 +170,17 @@ app.get('/artworks/Uppsala/:id', async (req, res) => {
   }
 })
 
-app.get('/resolved-artworks/Karlstad/:id', async (req, res) => {
+app.post('/users/:id', async (req, res) => {
   const { id } = req.params
+  const { artworkId, userId, currenCity } = req.body
   try {
-    const resolvedArtWorksByUser = await resolvedArtWorkKarlstad.find({ user: id }).populate({ path: 'artwork', select: ['title', 'id'] })
-    res.status(201).json({ success: true, resolvedArtWorksByUser })
-  } catch (err) {
-    res.status(400).json({ success: false, message: 'Kunde inte hitta användare', error: err })
-  }
-})
-
-app.get('/resolved-artworks/Uppsala/:id', async (req, res) => {
-  const { id } = req.params
-  try {
-    const resolvedArtWorksByUser = await resolvedArtWorkUppsala.find({ user: id }).populate({ path: 'artwork', select: ['title', 'id'] })
-    res.status(201).json({ success: true, resolvedArtWorksByUser })
-  } catch (err) {
-    res.status(400).json({ success: false, message: 'Kunde inte hitta användare', error: err })
-  }
-})
-
-app.post('/resolved-artworks/Karlstad', async (req, res) => {
-  const { artworkId, userId } = req.body
-  try {
-    const existingArtwork = await resolvedArtWorkKarlstad.findOne({ artwork: artworkId, user: userId })
-    if (existingArtwork) {
-      res.status(201).json({ success: true, message: 'Du har redan sparat detta konstverk.', existingArtwork })
+    if (currentCity = "Karlstad") {
+      const resolvedArtwork = await User.findById(id).populate({ path: 'resolvedKarlstad', select: ['_id', 'title', 'id', 'location', 'isResolved'] }).findOneAndUpdate({ resolvedKarlstad, _id: artworkId }, { $set: { isResolved: true } })
     } else {
-      const resolvedArtwork = new resolvedArtWorkKarlstad({ artwork: artworkId, user: userId })
-      const savedResolvedArtwork = await resolvedArtwork.save()
-      res.status(201).json({ success: true, savedResolvedArtwork })
+      const resolvedArtwork = await User.findById(id).populate({ path: 'resolvedUppsala', select: ['_id', 'title', 'id', 'location', 'isResolved'] }).findOneAndUpdate({ resolvedKarlstad, _id: artworkId }, { $set: { isResolved: true } })
     }
   } catch (err) {
-    res.status(400).json({ success: false, message: 'Kunde inte spara det funna konstverket till databasen.', error: err.errors })
-  }
-})
-
-app.post('/resolved-artworks/Uppsala', async (req, res) => {
-  const { artworkId, userId } = req.body
-  try {
-    const existingArtwork = await resolvedArtWorkUppsala.findOne({ artwork: artworkId, user: userId })
-    if (existingArtwork) {
-      res.status(201).json({ success: true, message: 'Du har redan sparat detta konstverk.', existingArtwork })
-    } else {
-      const resolvedArtwork = new resolvedArtWorkUppsala({ artwork: artworkId, user: userId })
-      const savedResolvedArtwork = await resolvedArtwork.save()
-      res.status(201).json({ success: true, savedResolvedArtwork })
-    }
-  } catch (err) {
-    res.status(400).json({ success: false, message: 'Kunde inte spara det funna konstverket till databasen.', error: err.errors })
+    res.status(400).json({ success: false, message: 'Kunde inte hitta användare', error: err })
   }
 })
 
